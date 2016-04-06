@@ -6,13 +6,13 @@ var postSchema= Schema({
     type:String,
     required:true
   },
-  job:{
+  email:{
     type:String,
     required:true
   },
-  createAt:{
-    type:Date,
-    default:Date.now
+  DOB:{
+    type:String,
+    required:true
   }
 });
 
