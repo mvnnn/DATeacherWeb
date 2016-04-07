@@ -2,16 +2,20 @@ var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 
 var postSchema= Schema({
-  name:{
-    type:String,
+  id:{
+    type:Number,
     required:true
   },
-  email:{
+  name:{
     type:String,
     required:true
   },
   DOB:{
     type:String,
+    required:true
+  },
+  MobileNumber:{
+    type:Number,
     required:true
   }
 });

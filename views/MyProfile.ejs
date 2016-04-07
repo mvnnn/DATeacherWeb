@@ -24,13 +24,13 @@
 
   <section id="bio" ng-controller="MyProfileController as mypro">
 
-    <p class="setting" ng-model="name"><span>Name </span> abcdefgh </p>
+    <p class="setting" ng-model="name"><span>Name </span> {{products.name}} </p>
 
-    <p class="setting" ng-model="id"><span>ID</span> 201301xxx</p>
+    <p class="setting" ng-model="id"><span>ID</span> {{products.id}}</p>
 
-    <p class="setting" ng-model="dob"><span>DOB</span> 29/02/1995</p>
+    <p class="setting" ng-model="dob"><span>DOB</span>{{products.DOB}}</p>
 
-    <p class="setting" ng-model="num"><span>Mobile Num </span> 987654321</p>
+    <p class="setting" ng-model="num"><span>Mobile Num </span>{{products.MobileNumber}}</p>
 
   </section>
 
