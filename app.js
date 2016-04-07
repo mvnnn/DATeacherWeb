@@ -45,7 +45,6 @@ app.set('x-powered-by',false);
 
 // private routes
 app.get('/Home', Home.home);
-app.get('/MyCourses/Home', Home.home);
 app.get('/MyProfile', MyProfile.myProfile);
 app.get('/MyCourses', MyCourses.myCourses);
 app.get('/MyCourses/StudentHome', MyCourses.studentHome);
