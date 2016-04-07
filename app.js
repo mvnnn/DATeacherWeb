@@ -4,8 +4,12 @@ var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
+var jwt    = require('jsonwebtoken');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+// var mongoose=require('mongoose');
+// var dburl='mongodb://student:senteam15@ds011389.mlab.com:11389/courseaid';
+// mongoose.connect(dburl);
 
 // var authenticate = require('./routes/authenticate');
 // var admin = require('./routes/admin');
@@ -64,23 +68,22 @@ app.get('/Help', Navbar.help);
 app.get('/Logout', Navbar.logout);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+// app.use(function(req, res, next) {
+//   var err = new Error('Not Found');
+//   err.status = 404;
+//   next(err);
+// });
 
 // error handler
 // no stacktraces leaked to user unless in development environment
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.json({
-    response: 'error',
-    message: err.message,
-    data: (app.get('env') === 'development') ? err : {}
-  });
-});
+// app.use(function(err, req, res, next) {
+//   res.status(err.status || 500);
+//   res.json({
+//     response: 'error',
+//     message: err.message,
+//     data: (app.get('env') === 'development') ? err : {}
+//   });
+// });
 
 http.createServer(app).listen(port);
 console.log('port listen at :'+ Number(port));
-// module.exports = app;
