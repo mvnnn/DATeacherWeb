@@ -14,7 +14,7 @@ exports.myProfile=function(req,res){
 
   // post.save(mongoose);
 
-  mongoose.users.findOne({id:201301146},function(err,postss){
+  mongoose.findOne({id:201301146},function(err,postss){
     if(err) throw err;
     return postss;
   });
