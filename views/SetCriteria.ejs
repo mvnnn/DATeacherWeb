@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include Head.ejs %>
+</head>
+
+<body>
+<% include StudentNavbar.ejs %>
+<div class="w3-responsive">
+<div class="w3-box-center-table">
+<table class="w3-table w3-bordered w3-border w3-hoverable" style="width:100%">
+    <thead>
+    <tr>
+      <th class="w3-grey ">Type</th>
+      <th class="w3-grey">Weightage</th>
+      <th class="w3-grey">Select</th>
+    </tr>
+    </thead>
+    <tr>
+      <td>In Sem-1</td>
+      <td>
+                <input class="w3-input w3-border w3-twothird" type="number" placeholder="%" min="0" max="100">
+                  </td>
+      <td>
+          <input type="checkbox" value="">
+      </td>
+    </tr>
+    <tr>
+      <td>In Sem-2</td>
+      <td>
+                <input class="w3-input w3-border w3-twothird" type="number" placeholder="%" min="0" max="100">
+                  </td>
+      <td>
+          <input type="checkbox" value="">
+      </td>
+    </tr>
+    <tr>
+      <td>End Sem</td>
+      <td>
+                <input class="w3-input w3-border w3-twothird" type="number" placeholder="%" min="0" max="100">
+                  </td>
+      <td>
+          <input type="checkbox" value="">
+      </td>
+    </tr>
+     <tr>
+      <td>Lab</td>
+      <td>
+                <input class="w3-input w3-border w3-twothird" type="number" placeholder="%" min="0" max="100">
+                  </td>
+      <td>
+          <input type="checkbox" value="">
+      </td>
+    </tr>
+     <tr>
+      <td>Project</td>
+      <td>
+                <input class="w3-input w3-border w3-twothird" type="number" placeholder="%" min="0" max="100">
+                  </td>
+      <td>
+          <input type="checkbox" value="">
+      </td>
+    </tr>
+     <tr>
+      <td>Attendance</td>
+      <td>
+                <input class="w3-input w3-border w3-twothird" type="number" placeholder="%" min="0" max="100">
+                  </td>
+      <td>
+          <input type="checkbox" value="">
+      </td>
+    </tr>
+</table>
+<br>
+<a href="#" data-toggle="tooltip" title="Add another field" class="w3-btn-floating w3-teal">+</a>
+<br><br>
+<div class="checkbox">
+  <label><input type="checkbox" value="">Weightage visible to the students</label>
+</div>
+<br>
+<button class="w3-btn w3-blue-grey w3-border w3-border w3-round-xlarge">Save</button>
+</div>
+</div>
+
+
+<% include Footer.ejs %>
+
+</body>
+</html>

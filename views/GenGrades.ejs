@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include Head.ejs %>
+</head>
+
+<body>
+<% include StudentNavbar.ejs %>
+
+<div class="w3-responsive">
+<div class="w3-box-center-table">
+  <table class="w3-table w3-bordered w3-border w3-hoverable" style="width:100%" >
+      <thead>
+      <tr>
+        <th class="w3-grey" >Grades</th>
+        <th class="w3-grey" >Marks Range</th>
+      </tr>
+      </thead>
+      <tr>
+        <td >AA</td>
+        <td>
+                  <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100">
+                  <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100">
+
+                </td>
+      </tr>
+      <tr>
+        <td>AB</td>
+        <td colspan="2">
+          <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100">
+          <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100">
+
+                </td>
+      </tr>
+      <tr>
+        <td>BB</td>
+        <td colspan="2">
+          <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100">
+          <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100">
+                </td>
+
+      </tr>
+       <tr>
+        <td>BC</td>
+        <td colspan="2">
+          <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100">
+          <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100">
+
+                </td>
+      </tr>
+       <tr>
+        <td>CC</td>
+        <td colspan="2">
+          <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100">
+          <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100">
+
+                </td>
+
+      </tr>
+       <tr>
+        <td>CD</td>
+        <td colspan="2">
+          <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100">
+          <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100">
+
+                </td>
+
+      </tr>
+      <tr>
+       <td>DD</td>
+       <td colspan="2">
+         <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100">
+         <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100">
+
+               </td>
+
+     </tr>
+     <tr>
+      <td>DE</td>
+      <td colspan="2">
+        <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100">
+        <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100">
+
+              </td>
+
+    </tr>
+    <tr>
+     <td>F</td>
+     <td colspan="2">
+       <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100">
+       <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100">
+
+             </td>
+
+   </tr>
+  </table>
+<br>
+<br>
+<button class="w3-btn w3-grey w3-border w3-border-black w3-round-xlarge">Generate</button>
+</div>
+</div>
+
+
+
+
+    <script>
+  function updateTextInput(val) {
+    document.getElementById('textInput').value=val;
+  }
+  </script>
+
+
+<% include Footer.ejs %>
+
+</body>
+</html>

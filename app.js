@@ -45,8 +45,17 @@ app.set('x-powered-by',false);
 
 // private routes
 app.get('/Home', Home.home);
+app.get('/MyCourses/Home', Home.home);
 app.get('/MyProfile', MyProfile.myProfile);
 app.get('/MyCourses', MyCourses.myCourses);
+app.get('/MyCourses/StudentHome', MyCourses.studentHome);
+app.get('/MyCourses/StudentList', MyCourses.studentList);
+app.get('/MyCourses/SetCriteria', MyCourses.setCriteria);
+app.get('/MyCourses/UploadMarks', MyCourses.uploadMarks);
+app.get('/MyCourses/PerformanceStates', MyCourses.performanceStates);
+app.get('/MyCourses/GenGrades', MyCourses.genGrades);
+app.get('/MyCourses/Broadcast', MyCourses.broadcast);
+
 app.get('/Queires', Queires.queires);
 app.get('/Repository', Repository.repository);
 
