@@ -2,6 +2,10 @@ var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 
 var postSchema= Schema({
+  _id:{
+    type:Number,
+    require:true
+  },
   id:{
     type:Number,
     require:true
@@ -23,10 +27,6 @@ var postSchema= Schema({
   },
   attendence:{
     type:Number
-  },
-  postedBy: {
-      type: mongoose.Schema.Types.Mixed,
-      ref: 'user'
   }
 });
 

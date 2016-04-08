@@ -1,8 +1,5 @@
 var User = require('../../model/user');
-var mongoose=require('mongoose');
-var dburl='mongodb://student:senteam15@ds011389.mlab.com:11389/courseaid';
-mongoose.connect(dburl);
-var db = mongoose.connection;
+// var db = mongoose.connection;
 exports.myProfile=function(req,res){
 
   // var post = new User({

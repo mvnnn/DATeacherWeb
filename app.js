@@ -7,16 +7,16 @@ var logger = require('morgan');
 var jwt    = require('jsonwebtoken');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-// var mongoose=require('mongoose');
-// var dburl='mongodb://student:senteam15@ds011389.mlab.com:11389/courseaid';
-// mongoose.connect(dburl);
-
+var mongoose=require('mongoose');
+var dburl='mongodb://**:***@ds011389.mlab.com:11389/courseaid';
+mongoose.connect(dburl);
 // var authenticate = require('./routes/authenticate');
 // var admin = require('./routes/admin');
 
 var Home = require('./routes/private/Home');
 var MyProfile = require('./routes/private/MyProfile');
 var MyCourses = require('./routes/private/MyCourses');
+// var Grade = require('./routes/private/Grade');
 var Queires = require('./routes/private/Queires');
 var Repository = require('./routes/private/Repository');
 var Navbar = require('./routes/private/Navbar');
@@ -55,8 +55,10 @@ app.get('/MyCourses/StudentHome', MyCourses.studentHome);
 app.get('/MyCourses/StudentList', MyCourses.studentList);
 app.get('/MyCourses/SetCriteria', MyCourses.setCriteria);
 app.get('/MyCourses/UploadMarks', MyCourses.uploadMarks);
+app.post('/MyCourses/UploadMarks', MyCourses.setUploadMarks);
 app.get('/MyCourses/PerformanceStates', MyCourses.performanceStates);
 app.get('/MyCourses/GenGrades', MyCourses.genGrades);
+app.post('/MyCourses/GenGrades', MyCourses.storeGrades);
 app.get('/MyCourses/Broadcast', MyCourses.broadcast);
 
 app.get('/Queires', Queires.queires);

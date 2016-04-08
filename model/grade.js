@@ -11,9 +11,9 @@ var postSchema= Schema({
   DD:[{ min: Number, max:Number }],
   DE:[{ min: Number, max:Number }],
   F:[{ min: Number, max:Number }],
-  postedBy: {
-      type: mongoose.Schema.Types.Mixed,
-      ref: 'user'
+  _id:{
+    type:Number,
+    required:true
   }
 });
 
