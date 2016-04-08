@@ -1,12 +1,16 @@
 (function(){
 var app = angular.module('MyProfile', []);
 
-app.controller('MyProfileController', [ '$scope','$http', function(){
+app.controller('MyProfileController', function($scope,$http){
 
-$http.get('https://da-profsite.herokuapp.com/MyProfile').success(function(data){
-            $scope.products = data; //We need to initialize products
-        });
+// $http.get('/MyProfile').success(function(data){
+//             $scope.products = data;
+//             console.log(data); //We need to initialize products
+//         });
 
+
+}  );
+})();
 // $scope.submitdata = function(){
 // name = req.body.name;
 // email = req.body.email;
@@ -14,5 +18,3 @@ $http.get('https://da-profsite.herokuapp.com/MyProfile').success(function(data){
 // $http.post("https://da-profsite.herokuapp.com/MyProfile", data).success(function(data, status) {
 //             $scope.hello = data;
 //         })
-} ] );}
-})();

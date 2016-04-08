@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="MyProfile">
+<html>
 <head>
 <% include Head.ejs %>
 </head>
@@ -22,15 +22,15 @@
   <br><br>
   <br>
 
-  <section id="bio" ng-controller="MyProfileController as mypro">
+  <section id="bio">
 
-    <p class="setting" ng-model="name"><span>Name </span> {{products.name}} </p>
+    <p class="setting"><span>Name </span> <%= data.name %> </p>
 
-    <p class="setting" ng-model="id"><span>ID</span> {{products.id}}</p>
+    <p class="setting"><span>ID</span> <%= data.id %></p>
 
-    <p class="setting" ng-model="dob"><span>DOB</span>{{products.DOB}}</p>
+    <p class="setting"><span>DOB</span><%= data.DOB %></p>
 
-    <p class="setting" ng-model="num"><span>Mobile Num </span>{{products.MobileNumber}}</p>
+    <p class="setting"><span>Mobile Num </span><%= data.MobileNumber %></p>
 
   </section>
 
