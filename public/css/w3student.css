@@ -512,3 +512,6 @@ div.clear         { clear: both; }
   .affix + .container-fluid {
       padding-top: 70px;
   }
+
+
+.w3-box-center-footer{border-radius: 16px; border: 2px solid #000000; padding-right:16px !important; padding-left:16px !important; padding-top:2px !important;padding-bottom:16px !important;margin:16px !important;}
