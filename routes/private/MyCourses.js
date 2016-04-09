@@ -21,7 +21,7 @@ exports.studentList=function(req,res){
 /* set Criteria */
 exports.setCriteria=function(req,res){
 
-  Criteria.findOne({_id:20111111}, function (err, response) {
+  Criteria.findOne({id:20111111}, function (err, response) {
     console.log(response);
     if(response){
       response = response;
@@ -35,22 +35,39 @@ exports.setCriteria=function(req,res){
 
 exports.saveSetCriteria=function(req,res){
 
-  Criteria.remove({_id: 20111111},function(err){
-    if(err) throw err;
-  });
-  var post = new Criteria({
-    _id:20111111,
+  // Criteria.remove({id: 20111111},function(err){
+  //   if(err) throw err;
+  // });
+
+  Criteria.update({id:20111111, course:"EL203"},
+    {id:20111111,
+    course:"EL203",
     insem1:req.body.insem1,
     insem2:req.body.insem2,
     endsem:req.body.endsem,
     project:req.body.project,
     lab:req.body.lab,
-    attendance:req.body.attendance
-  });
+    attendance:req.body.attendance},
+    { upsert: true },
+    function(err, response){
+      if(err) throw err;
+      else res.redirect('SetCriteria');
+    });
 
-  post.save(mongoose);
-  // console.log(post);
-  res.render('SetCriteria',{data:post});
+  // var post = new Criteria({
+  //   id:20111111,
+  //   course:"EL203",
+  //   insem1:req.body.insem1,
+  //   insem2:req.body.insem2,
+  //   endsem:req.body.endsem,
+  //   project:req.body.project,
+  //   lab:req.body.lab,
+  //   attendance:req.body.attendance
+  // });
+  //
+  // post.save(mongoose);
+  // // console.log(post);
+  // res.render('SetCriteria',{data:post});
 };
 
 
@@ -102,7 +119,7 @@ exports.performanceStates=function(req,res){
 
 /* Generate grade*/
 exports.genGrades=function(req,res){
-  Grade.findOne({_id:20111111}, function (err, response) {
+  Grade.findOne({id:20111111}, function (err, response) {
     if(response){
       response = response;
     }
@@ -117,25 +134,45 @@ exports.genGrades=function(req,res){
 
 exports.storeGrades=function(req,res){
 
-  Grade.remove({_id: 20111111},function(err){
-    if(err) throw err;
-  });
-  var post = new Grade({
-    AA:[{ min: req.body.AAmin, max:req.body.AAmax }],
-    AB:[{ min: req.body.ABmin, max:req.body.ABmax }],
-    BB:[{ min: req.body.BBmin, max:req.body.BBmax }],
-    BC:[{ min: req.body.BCmin, max:req.body.BCmax }],
-    CC:[{ min: req.body.CCmin, max:req.body.CCmax }],
-    CD:[{ min: req.body.CDmin, max:req.body.CDmax }],
-    DD:[{ min: req.body.DDmin, max:req.body.DDmax }],
-    DE:[{ min: req.body.DEmin, max:req.body.DEmax }],
-    F:[{ min: req.body.Fmin, max:req.body.Fmax }],
-    _id:20111111
-  });
+  // Grade.remove({id: 20111111},function(err){
+  //   if(err) throw err;
+  // });
 
-  post.save(mongoose);
-  // console.log(post);
-  res.render('GenGrades',{data:post});
+  Grade.update({id:20111111, course:"EL203"},
+    {   AA:[{ min: req.body.AAmin, max:req.body.AAmax }],
+        AB:[{ min: req.body.ABmin, max:req.body.ABmax }],
+        BB:[{ min: req.body.BBmin, max:req.body.BBmax }],
+        BC:[{ min: req.body.BCmin, max:req.body.BCmax }],
+        CC:[{ min: req.body.CCmin, max:req.body.CCmax }],
+        CD:[{ min: req.body.CDmin, max:req.body.CDmax }],
+        DD:[{ min: req.body.DDmin, max:req.body.DDmax }],
+        DE:[{ min: req.body.DEmin, max:req.body.DEmax }],
+        F:[{ min: req.body.Fmin, max:req.body.Fmax }],
+        id:20111111,
+        course:"EL203"},
+        { upsert: true },
+    function(err){
+      if(err) throw err;
+      else res.redirect('GenGrades');
+    });
+
+  // var post = new Grade({
+  //   AA:[{ min: req.body.AAmin, max:req.body.AAmax }],
+  //   AB:[{ min: req.body.ABmin, max:req.body.ABmax }],
+  //   BB:[{ min: req.body.BBmin, max:req.body.BBmax }],
+  //   BC:[{ min: req.body.BCmin, max:req.body.BCmax }],
+  //   CC:[{ min: req.body.CCmin, max:req.body.CCmax }],
+  //   CD:[{ min: req.body.CDmin, max:req.body.CDmax }],
+  //   DD:[{ min: req.body.DDmin, max:req.body.DDmax }],
+  //   DE:[{ min: req.body.DEmin, max:req.body.DEmax }],
+  //   F:[{ min: req.body.Fmin, max:req.body.Fmax }],
+  //   id:20111111,
+  //   course:"EL203"
+  // });
+  //
+  // post.save(mongoose);
+  // // console.log(post);
+  // res.render('GenGrades',{data:post});
 };
 
 

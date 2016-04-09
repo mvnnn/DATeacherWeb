@@ -10,10 +10,9 @@ var bodyParser = require('body-parser');
 var mongoose=require('mongoose');
 var dburl='mongodb://student:***@ds011389.mlab.com:11389/courseaid';
 mongoose.connect(dburl);
-// var authenticate = require('./routes/authenticate');
-// var admin = require('./routes/admin');
 
 var Home = require('./routes/private/Home');
+var Authentication = require('./routes/private/Authentication');
 var MyProfile = require('./routes/private/MyProfile');
 var MyCourses = require('./routes/private/MyCourses');
 // var Grade = require('./routes/private/Grade');
@@ -48,19 +47,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('x-powered-by',false);
 
 // private routes
+app.get('/', Authentication.authentication);
+app.get('/Login', Authentication.login);
+app.get('/SignUp', Authentication.signUp);
 app.get('/Home', Home.home);
 app.get('/MyProfile', MyProfile.myProfile);
 app.get('/MyCourses', MyCourses.myCourses);
-app.get('/MyCourses/StudentHome', MyCourses.studentHome);
-app.get('/MyCourses/StudentList', MyCourses.studentList);
-app.get('/MyCourses/SetCriteria', MyCourses.setCriteria);
-app.post('/MyCourses/SetCriteria', MyCourses.saveSetCriteria);
-app.get('/MyCourses/UploadMarks', MyCourses.uploadMarks);
-app.post('/MyCourses/UploadMarks', MyCourses.setUploadMarks);
-app.get('/MyCourses/PerformanceStates', MyCourses.performanceStates);
-app.get('/MyCourses/GenGrades', MyCourses.genGrades);
-app.post('/MyCourses/GenGrades', MyCourses.storeGrades);
-app.get('/MyCourses/Broadcast', MyCourses.broadcast);
+app.get('/MyCourses/*/StudentHome', MyCourses.studentHome);
+app.get('/MyCourses/*/StudentList', MyCourses.studentList);
+app.get('/MyCourses/*/SetCriteria', MyCourses.setCriteria);
+app.post('/MyCourses/*/SetCriteria', MyCourses.saveSetCriteria);
+app.get('/MyCourses/*/UploadMarks', MyCourses.uploadMarks);
+app.post('/MyCourses/*/UploadMarks', MyCourses.setUploadMarks);
+app.get('/MyCourses/*/PerformanceStates', MyCourses.performanceStates);
+app.get('/MyCourses/*/GenGrades', MyCourses.genGrades);
+app.post('/MyCourses/*/GenGrades', MyCourses.storeGrades);
+app.get('/MyCourses/*/Broadcast', MyCourses.broadcast);
 
 app.get('/Queires', Queires.queires);
 app.get('/Repository', Repository.repository);
@@ -70,23 +72,23 @@ app.get('/ChangePass', Navbar.changePass);
 app.get('/Help', Navbar.help);
 app.get('/Logout', Navbar.logout);
 
-// catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-//   var err = new Error('Not Found');
-//   err.status = 404;
-//   next(err);
-// });
+//catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
 
 // error handler
 // no stacktraces leaked to user unless in development environment
-// app.use(function(err, req, res, next) {
-//   res.status(err.status || 500);
-//   res.json({
-//     response: 'error',
-//     message: err.message,
-//     data: (app.get('env') === 'development') ? err : {}
-//   });
-// });
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.json({
+    response: 'error',
+    message: err.message,
+    data: (app.get('env') === 'development') ? err : {}
+  });
+});
 
 http.createServer(app).listen(port);
 console.log('port listen at :'+ Number(port));

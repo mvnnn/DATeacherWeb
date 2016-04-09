@@ -9,6 +9,14 @@ var postSchema= Schema({
   text:{
     type:String,
     required:true
+  },
+  id:{
+    type:Number,
+    required:true
+  },
+  course_id:{
+    type:String,
+    required:true
   }
 });
 

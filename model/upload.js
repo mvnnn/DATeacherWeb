@@ -2,11 +2,14 @@ var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 
 var postSchema= Schema({
-  _id:{
+  id:{
     type:Number,
     require:true
   },
-  id:{
+  course_id:{
+    type:String
+  },
+  std_id:{
     type:Number,
     require:true
   },

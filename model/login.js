@@ -2,11 +2,15 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var PostSchema = new mongoose.Schema({
-  _id:{
+  id:{
     type:String,
     required:true
   },
   password:{
+    type:String,
+    required:true
+  },
+  token:{
     type:String,
     required:true
   }

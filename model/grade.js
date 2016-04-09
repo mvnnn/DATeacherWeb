@@ -11,9 +11,12 @@ var postSchema= Schema({
   DD:[{ min: Number, max:Number }],
   DE:[{ min: Number, max:Number }],
   F:[{ min: Number, max:Number }],
-  _id:{
+  id:{
     type:Number,
     required:true
+  },
+  course_id:{
+    type:String
   }
 });
 

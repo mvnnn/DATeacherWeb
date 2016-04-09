@@ -1,6 +1,12 @@
 var mongoose = require('mongoose');
 
 var PostSchema = new mongoose.Schema({
+  id:{
+    type:Number
+  },
+  course_id:{
+    type:String
+  },
   insem1:{
     type:Number
   },
