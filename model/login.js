@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var PostSchema = new mongoose.Schema({
-  id:{
+  _id:{
     type:String,
     required:true
   },

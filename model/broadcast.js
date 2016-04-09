@@ -9,10 +9,6 @@ var postSchema= Schema({
   text:{
     type:String,
     required:true
-  },
-  postedBy: {
-      type: mongoose.Schema.Types.Mixed,
-      ref: 'user'
   }
 });
 

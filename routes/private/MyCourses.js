@@ -1,6 +1,8 @@
 var Grade = require('../../model/grade');
+var Criteria = require('../../model/criteria');
 var mongoose=require('mongoose');
 var xlsx_json = require('xls-to-json');
+var multer	=	require('multer');
 
 exports.myCourses=function(req,res){
   res.render('MyCourses');
@@ -14,27 +16,80 @@ exports.studentList=function(req,res){
   res.render('StudentList');
 };
 
+
+
+/* set Criteria */
 exports.setCriteria=function(req,res){
-  res.render('SetCriteria');
+
+  Criteria.findOne({_id:20111111}, function (err, response) {
+    console.log(response);
+    if(response){
+      response = response;
+    }
+    else{
+      response = null;
+    }
+   res.render('SetCriteria',{data:response});
+  });
 };
+
+exports.saveSetCriteria=function(req,res){
+
+  Criteria.remove({_id: 20111111},function(err){
+    if(err) throw err;
+  });
+  var post = new Criteria({
+    _id:20111111,
+    insem1:req.body.insem1,
+    insem2:req.body.insem2,
+    endsem:req.body.endsem,
+    project:req.body.project,
+    lab:req.body.lab,
+    attendance:req.body.attendance
+  });
+
+  post.save(mongoose);
+  // console.log(post);
+  res.render('SetCriteria',{data:post});
+};
+
+
+
+
 
 exports.uploadMarks=function(req,res){
   res.render('UploadMarks');
 };
 
 exports.setUploadMarks=function(req,res){
-  // console.log(req.body.getfile);
 
-xlsx_json({
-  input: req.body.getfile,
-  output: null
-}, function(err, result) {
-  if(err) {
-    console.error(err);
-  }else {
-    console.log(result);
+  var storage	=	multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, '../../public/uploads');
+  },
+  filename: function (req, file, callback) {
+    callback(null, file.fieldname + '-' + Date.now());
   }
 });
+var upload = multer({ storage : storage}).single('getfile');
+
+upload(req,res,function(err) {
+		if(err) {
+			return res.end("Error uploading file.");
+		}
+		res.end("File is uploaded");
+	});
+
+// xlsx_json({
+//   input: req.body.getfile,
+//   output: null
+// }, function(err, result) {
+//   if(err) {
+//     console.error(err);
+//   }else {
+//     console.log(result);
+//   }
+// });
   // res.render('UploadMarks');
 };
 
@@ -79,7 +134,7 @@ exports.storeGrades=function(req,res){
   });
 
   post.save(mongoose);
-  console.log(post);
+  // console.log(post);
   res.render('GenGrades',{data:post});
 };
 

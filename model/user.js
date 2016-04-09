@@ -2,7 +2,7 @@ var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 
 var postSchema= Schema({
-  id:{
+  _id:{
     type:Number,
     required:true
   },
@@ -12,10 +12,6 @@ var postSchema= Schema({
   },
   DOB:{
     type:String,
-    required:true
-  },
-  MobileNumber:{
-    type:Number,
     required:true
   }
 });

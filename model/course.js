@@ -18,10 +18,6 @@ var PostSchema = new mongoose.Schema({
   },
   attendence:{
     type:Number
-  },
-  postedBy: {
-      type: mongoose.Schema.Types.Mixed,
-      ref: 'user'
   }
 });
 
