@@ -22,7 +22,7 @@ exports.studentList=function(req,res){
 exports.setCriteria=function(req,res){
 
   Criteria.findOne({id:20111111}, function (err, response) {
-    console.log(response);
+    // console.log(response);
     if(response){
       response = response;
     }
