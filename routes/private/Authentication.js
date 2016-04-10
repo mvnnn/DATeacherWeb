@@ -1,3 +1,7 @@
+var User = require('../../model/user');
+var mongoose=require('mongoose');
+var nodemailer = require('nodemailer');
+
 exports.authentication=function(req,res){
   res.render('Authentication');
 };
@@ -6,36 +10,70 @@ exports.signUp=function(req,res){
   res.render('SignUp');
 };
 
+exports.signUpData=function(req,res){
+
+  function generator(n){
+    var tt="";
+    var stringg="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+    for(var i=0;i<n;i++){
+      tt += stringg.charAt(Math.floor(Math.random()*stringg.length));
+    }
+    return tt;
+  };
+
+  var pwd = generator(7);
+  var gen_token = generator(4) + req.body.id + generator(4);
+
+
+    var smtp = nodemailer.createTransport("    SMTP", {
+        service: "Gmail",
+        auth: {
+            user: "sen15.2016@gmail.com",
+            pass: "senteam15"
+        }
+    });
+
+
+
+    mailList ={};
+    mailList.to = req.body.id + "@daiict.ac.in";
+    mailList.subject = "halo bhaii.. lejo";
+    mailList.text = 'password is  "'+ pwd+'"';
+    smtp.sendMail(mailList, function(error, response){
+        if(error){
+            console.log(error);
+        }
+        else{
+            console.log("Message sent: " + response.message);
+
+        }
+    });
+
+  User.update({id:req.body.id},
+    {id:req.body.id,
+    name:req.body.name,
+    DOB:req.body.dob,
+    password:pwd,
+    token:gen_token},
+    { upsert: true },
+    function(err, response){
+      if(err) throw err;
+      else res.redirect('Authentication');
+    });
+};
 
 exports.login=function(req,res){
   res.render('Login');
 };
 
+exports.loginAuth=function(req,res){
+  User.findOne({id:req.body.id, password:req.body.password}, function (err, response) {
+    if(response){
+      res.render('Home',{data:response});
+    }
+    else{
+      res.render('SignUp');
+    }
 
-
-
-
-
-
-
-// var nodemailer = require('nodemailer');
-//
-// // create reusable transporter object using the default SMTP transport
-// var transporter = nodemailer.createTransport('smtps://user%40gmail.com:pass@smtp.gmail.com');
-//
-// // setup e-mail data with unicode symbols
-// var mailOptions = {
-//     from: '"Fred Foo 👥" <foo@blurdybloop.com>', // sender address
-//     to: 'bar@blurdybloop.com, baz@blurdybloop.com', // list of receivers
-//     subject: 'Hello ✔', // Subject line
-//     text: 'Hello world 🐴', // plaintext body
-//     html: '<b>Hello world 🐴</b>' // html body
-// };
-//
-// // send mail with defined transport object
-// transporter.sendMail(mailOptions, function(error, info){
-//     if(error){
-//         return console.log(error);
-//     }
-//     console.log('Message sent: ' + info.response);
-// });
+  });
+};

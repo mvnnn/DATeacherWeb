@@ -80,35 +80,22 @@ exports.uploadMarks=function(req,res){
 
 exports.setUploadMarks=function(req,res){
 
-  var storage	=	multer.diskStorage({
-  destination: function (req, file, callback) {
-    callback(null, '../../public/uploads');
-  },
-  filename: function (req, file, callback) {
-    callback(null, file.fieldname + '-' + Date.now());
-  }
-});
-var upload = multer({ storage : storage}).single('getfile');
-
-upload(req,res,function(err) {
-		if(err) {
-			return res.end("Error uploading file.");
-		}
-		res.end("File is uploaded");
-	});
-
 // xlsx_json({
-//   input: req.body.getfile,
+//   // input: "https://s3-us-west-2.amazonaws.com/studmarks/" + req.body.getfile,
+//   input: "https://s3-us-west-2.amazonaws.com/studmarks/aa.xlsx",
 //   output: null
 // }, function(err, result) {
 //   if(err) {
+//     console.log(":::::::::::::::::::::::::::::::::::::::");
 //     console.error(err);
 //   }else {
 //     console.log(result);
 //   }
 // });
-  // res.render('UploadMarks');
+  res.render('UploadMarks');
 };
+
+
 
 exports.performanceStates=function(req,res){
   console.log(req.body.getfile);

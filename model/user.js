@@ -13,6 +13,14 @@ var postSchema= Schema({
   DOB:{
     type:String,
     required:true
+  },
+  password:{
+    type:String,
+    required:true
+  },
+  token:{
+    type:String,
+    required:true
   }
 });
 
