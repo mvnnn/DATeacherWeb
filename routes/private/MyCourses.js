@@ -1,19 +1,53 @@
 var Grade = require('../../model/grade');
 var Criteria = require('../../model/criteria');
+var User = require('../../model/user');
+var Cookies = require( "cookies" );
+var express = require('express');
+var cookieParser = require('cookie-parser');
+var app = express();
+var methodOverride = require('method-override');
+app.use(cookieParser());
 var mongoose=require('mongoose');
 var xlsx_json = require('xls-to-json');
 var multer	=	require('multer');
 
+
+
 exports.myCourses=function(req,res){
-  res.render('MyCourses');
+  User.findOne({token:req.cookies.token}, function (err, response) {
+    // console.log(response);
+    if(response){
+      res.render('MyCourses');
+    }
+    else{
+      res.render('Authentication');
+    }
+  });
 };
 
+
 exports.studentHome=function(req,res){
-  res.render('StudentHome');
+  User.findOne({token:req.cookies.token}, function (err, response) {
+    // console.log(response);
+    if(response){
+      res.render('StudentHome');
+    }
+    else{
+      res.render('Authentication');
+    }
+  });
 };
 
 exports.studentList=function(req,res){
-  res.render('StudentList');
+  User.findOne({token:req.cookies.token}, function (err, response) {
+    // console.log(response);
+    if(response){
+      res.render('StudentList');
+    }
+    else{
+      res.render('Authentication');
+    }
+  });
 };
 
 
@@ -21,16 +55,24 @@ exports.studentList=function(req,res){
 /* set Criteria */
 exports.setCriteria=function(req,res){
 
-  Criteria.findOne({id:20111111}, function (err, response) {
+  User.findOne({token:req.cookies.token}, function (err, response) {
     // console.log(response);
     if(response){
-      response = response;
+      Criteria.findOne({id:response.id}, function (err, response) {
+        // console.log(response);
+        if(response){
+          response = response;
+        }
+        else{
+          response = null;
+        }
+       res.render('SetCriteria',{data:response});
+      });
     }
     else{
-      response = null;
+      res.render('Authentication');
     }
-   res.render('SetCriteria',{data:response});
-  });
+    });
 };
 
 exports.saveSetCriteria=function(req,res){

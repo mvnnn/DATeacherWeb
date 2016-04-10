@@ -10,7 +10,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose=require('mongoose');
 var Cookies = require( "cookies" );
-var dburl='mongodb://student:***@ds011389.mlab.com:11389/courseaid';
+var dburl='mongodb://student:senteam15@ds011389.mlab.com:11389/courseaid';
 mongoose.connect(dburl);
 
 var Home = require('./routes/private/Home');
@@ -84,8 +84,6 @@ app.get('/MyCourses/*/Broadcast', MyCourses.broadcast);
 
 app.get('/Queires', Queires.queires);
 app.get('/Repository', Repository.repository);
-
-app.get('/Preferences', Navbar.preferences);
 app.get('/ChangePass', Navbar.changePass);
 app.get('/Help', Navbar.help);
 // app.get('/Logout', Navbar.logout);
