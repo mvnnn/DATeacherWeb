@@ -3,15 +3,13 @@ var Schema=mongoose.Schema;
 
 var postSchema= Schema({
   id:{
-    type:Number,
-    require:true
+    type:Number
   },
-  course_id:{
+  course:{
     type:String
   },
   std_id:{
-    type:Number,
-    require:true
+    type:Number
   },
   insem1:{
     type:Number
@@ -28,7 +26,7 @@ var postSchema= Schema({
   project:{
     type:Number
   },
-  attendence:{
+  attendance:{
     type:Number
   }
 });

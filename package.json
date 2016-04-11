@@ -20,6 +20,7 @@
     "excel": "^0.1.4",
     "express": "~4.12.4",
     "express-session": "1.7.6",
+    "jquery": "^2.2.3",
     "jsonwebtoken": "^5.7.0",
     "less-middleware": "1.0.4",
     "method-override": "2.1.3",

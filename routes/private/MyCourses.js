@@ -1,5 +1,6 @@
 var Grade = require('../../model/grade');
 var Criteria = require('../../model/criteria');
+var Upload = require('../../model/upload');
 var User = require('../../model/user');
 var Cookies = require( "cookies" );
 var express = require('express');
@@ -121,13 +122,59 @@ exports.saveSetCriteria=function(req,res){
 
 
 exports.uploadMarks=function(req,res){
-  res.render('UploadMarks');
+  var data = null;
+  res.render('UploadMarks',{data:data});
 };
 
 exports.setUploadMarks=function(req,res){
-  // console.log(";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;");
-  // console.log(req.body.getfile);
-  res.render('UploadMarks');
+  var n = (req.body.line.length-1) / 6;
+  // var aa = req.body;
+  // var lines = aa.split(",");
+  User.findOne({token:req.cookies.token}, function (err, response) {
+    // console.log(response);
+    if(response){
+
+      for (i = 1; i < n; i++) {
+
+        var ee = req.body.line[6*i].split("\n");
+        var ww;
+        // console.log(ee[1]);
+        // console.log(req.body.line[(6*i)+1]);
+        // console.log(req.body.line[(6*i)+2]);
+        // console.log(req.body.line[(6*i)+3]);
+        // console.log(req.body.line[(6*i)+4]);
+        // console.log(req.body.line[(6*i)+5]);
+        if(i<(n-1)){
+        var www = req.body.line[(6*i)+6].split("\n");
+        ww = www[0];
+        }
+        else{
+          ww = req.body.line[(6*i)+6];
+        }
+
+      Upload.update({id:response.id, course:"EL203",std_id:ee[1]},
+        {id:response.id,
+        course:"EL203",
+        std_id:ee[1],
+        insem1:req.body.line[(6*i)+1],
+        insem2:req.body.line[(6*i)+2],
+        endsem:req.body.line[(6*i)+3],
+        project:req.body.line[(6*i)+4],
+        lab:req.body.line[(6*i)+5],
+        attendance:ww},
+        { upsert: true },
+        function(err, res){
+          if(err) throw err;
+          // else res.redirect('UploadMarks');
+        }
+    );
+  }
+}
+    else{
+      res.render('Authentication');
+    }
+    });
+
 };
 
 
@@ -135,7 +182,8 @@ exports.setUploadMarks=function(req,res){
 
 
 exports.performanceStates=function(req,res){
-  console.log(req.body.getfile);
+  data = "ahahhaha";
+  res.render('PerformanceStates',{data:data});
 };
 
 
