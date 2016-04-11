@@ -1,6 +1,12 @@
 var User = require('../../model/user');
 var mongoose=require('mongoose');
 var nodemailer = require('nodemailer');
+var Cookies = require( "cookies" );
+var express = require('express');
+var cookieParser = require('cookie-parser');
+var app = express();
+var methodOverride = require('method-override');
+app.use(cookieParser());
 
 exports.authentication=function(req,res){
   res.render('Authentication');
@@ -24,8 +30,7 @@ exports.signUpData=function(req,res){
   var pwd = generator(7);
   var gen_token = generator(4) + req.body.id + generator(4);
 
-
-    var smtp = nodemailer.createTransport("    SMTP", {
+    var smtp = nodemailer.createTransport("SMTP", {
         service: "Gmail",
         auth: {
             user: "sen15.2016@gmail.com",
@@ -69,7 +74,9 @@ exports.login=function(req,res){
 exports.loginAuth=function(req,res){
   User.findOne({id:req.body.id, password:req.body.password}, function (err, response) {
     if(response){
-      res.render('Home',{data:response});
+      console.log(response.token);
+      res.cookie('token', response.token, { maxAge: 900000, httpOnly: true });
+      res.render('Home');
     }
     else{
       res.render('SignUp');

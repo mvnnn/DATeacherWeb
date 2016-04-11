@@ -1,21 +1,20 @@
 var User = require('../../model/user');
-var mongoose=require('mongoose');
+var Cookies = require( "cookies" );
+var express = require('express');
+var cookieParser = require('cookie-parser');
+var app = express();
+var methodOverride = require('method-override');
+app.use(cookieParser());
 // var db = mongoose.connection;
 exports.myProfile=function(req,res){
 
-  // var post = new User({
-  //   name :"saifee12",
-  //   id : 201301142,
-  //   DOB : "15-04-1996"
-  // });
-  //
-  // post.save(mongoose);
-
-  User.findOne({id:201301142}, function (err, response) {
-    // console.log(err, response);
-  //  res.send(response);
-   res.render('MyProfile',{data:response});
+  User.findOne({token:req.cookies.token}, function (err, response) {
+    // console.log(response);
+    if(response){
+      res.render('MyProfile',{data:response});
+    }
+    else{
+      res.render('Authentication');
+    }
   });
-
-
 };
