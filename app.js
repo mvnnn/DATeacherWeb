@@ -1,5 +1,4 @@
 var http=require ('http');
-var port=process.env.PORT || 3000 ;
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -8,7 +7,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose=require('mongoose');
 var Cookies = require( "cookies" );
-var dburl='mongodb://student:senteam15@ds011389.mlab.com:11389/courseaid';
+var port=process.env.PORT || 3000 ;
+var dburl='mongodb://student:**@ds011389.mlab.com:11389/courseaid';
 mongoose.connect(dburl);
 
 var Home = require('./routes/private/Home');
