@@ -66,6 +66,8 @@ app.get('/MyCourses/*/SetCriteria', MyCourses.setCriteria);
 app.post('/MyCourses/*/SetCriteria', MyCourses.saveSetCriteria);
 app.get('/MyCourses/*/UploadMarks', MyCourses.uploadMarks);
 app.post('/MyCourses/*/UploadMarks', MyCourses.setUploadMarks);
+app.get('/MyCourses/*/StudentMarksList', MyCourses.StudentMarksList);
+app.post('/MyCourses/*/StudentMarksList', MyCourses.UpdateStudentMarksList);
 app.get('/MyCourses/*/PerformanceStates', MyCourses.performanceStates);
 app.get('/MyCourses/*/GenGrades', MyCourses.genGrades);
 app.post('/MyCourses/*/GenGrades', MyCourses.storeGrades);

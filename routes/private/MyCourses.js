@@ -179,6 +179,64 @@ exports.setUploadMarks=function(req,res){
 
 
 
+exports.StudentMarksList=function(req,res){
+
+  User.findOne({token:req.cookies.token}, function (err, response) {
+    // console.log(response);
+    if(response){
+      Upload.find({id:response.id, course:"EL203"}, function (err, respo) {
+        // console.log(response);
+        if(response){
+          respo = respo;
+        }
+        else{
+          respo = null;
+        }
+       res.render('StudentMarksList',{data:respo});
+      });
+    }
+    else{
+      res.render('Authentication');
+    }
+    });
+};
+
+
+
+exports.UpdateStudentMarksList=function(req,res){
+
+  User.findOne({token:req.cookies.token}, function (err, response) {
+    // console.log(response);
+    if(response){
+      for(i=0;i<(req.body.ArrSize);i++){
+        console.log(req.body.std_id[i]);
+        console.log(req.body.insem1[i]);
+        console.log(req.body.insem2[i]);
+        console.log(req.body.endsem[i]);
+        console.log(req.body.project[i]);
+        console.log(req.body.lab[i]);
+        console.log(req.body.attendance[i]);
+        console.log(response.id);
+      Upload.update({id:response.id, course:"EL203", std_id:req.body.std_id[i]},
+        {id:response.id,
+        course:"EL203",
+        std_id:req.body.std_id[i],
+        insem1:req.body.insem1[i],
+        insem2:req.body.insem2[i],
+        endsem:req.body.endsem[i],
+        project:req.body.project[i],
+        lab:req.body.lab[i],
+        attendance:req.body.attendance[i]},
+        { upsert: true });
+      }
+      // res.redirect('StudentMarksList');
+    }
+    else{
+      res.render('Authentication');
+    }
+    });
+};
+
 
 
 exports.performanceStates=function(req,res){

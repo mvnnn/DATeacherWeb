@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include Head.ejs %>
+</head>
+
+<body>
+<% include StudentNavbar.ejs %>
+
+
+<div id="menu2">
+<div class="w3-box-center-table">
+<table class="w3-table w3-striped w3-bordered w3-border w3-hoverable">
+    <thead>
+    <tr class="w3-light-grey">
+      <th class="w3-grey">StudentID</th>
+      <th class="w3-grey">InSem1</th>
+      <th class="w3-grey">InSem2</th>
+      <th class="w3-grey">Endsem</th>
+      <th class="w3-grey">Lab</th>
+      <th class="w3-grey">Project</th>
+      <th class="w3-grey">Attendance</th>
+    </tr>
+    </thead>
+
+    <form method="post">
+    <% if(data) {%>
+    <tr>
+      <input type="hidden" name="ArrSize" value= "<%= data.length%>" >
+      <% for(var i=0; i < data.length; i++) { %>
+      <td><input class="w3-input w3-border w3-twothird" placeholder="StudentID" name="std_id"[i] value= "<%= data[i].std_id%>"></td>
+      <td><input class="w3-input w3-border w3-third" placeholder="InSem1" name="insem1"[i] value= "<%= data[i].insem1%>"></td>
+      <td><input class="w3-input w3-border w3-third" placeholder="InSem2" name="insem2"[i] value= "<%= data[i].insem2%>"></td>
+      <td><input class="w3-input w3-border w3-third" placeholder="Endsem" name="endsem"[i] value= "<%= data[i].endsem%>"></td>
+      <td><input class="w3-input w3-border w3-third" placeholder="Lab" name="lab"[i] value= "<%= data[i].lab%>"></td>
+      <td><input class="w3-input w3-border w3-third" placeholder="Project" name="project"[i] value= "<%= data[i].project%>"></td>
+      <td><input class="w3-input w3-border w3-third" placeholder="Attendance" name="attendance"[i] value= "<%= data[i].attendance%>"></td>
+    </tr>
+    <% } %>
+    <tr>
+    <td><input class="w3-btn w3-grey w3-border w3-border-black w3-round-xlarge" type="submit" value="Submit"></td>
+    </tr>
+  <% } %>
+  </form>
+</table>
+</div>
+
+
+<% include Footer.ejs %>
+
+</body>
+</html>

@@ -20,36 +20,20 @@ window.onload = function() {
 				reader.onload = function(e) {
           this.data = reader.result;
           console.log(reader);
-          // console.log(reader.result[0]);
           var text = [];
           for (i = 0; i < reader.result.length; i++) {
             text[i] = reader.result;
           }
           var lines = reader.result.split(",");
-          // var pp = lines[6].split("↵");
-          // console.log(pp[0]);
-          // console.log(pp[1]);
           $.post("/MyCourses/EL203/UploadMarks",{line:lines});
-
-					// fileDisplayArea.innerText = reader.result;
 				}
 				reader.readAsText(file);
-        // console.log(this.data);
 			} else {
 				fileDisplayArea.innerText = "File not supported!"
 			}
 		});
   }
-// $(function () {
-//   console.log("yoooooooooooooooooooooooooooooo");
-//     $("#submit").on('click',function(){
-//       var textType = /text.*/;
-//       var reader = new FileReader();
-//       console.log(":::::::::");
-//       console.log(this.data);
-//       console.log(";;;;;;;;;;;");
-//     });
-// });
+
 </script>
 </head>
 
