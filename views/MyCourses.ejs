@@ -14,22 +14,23 @@
 <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable">
     <thead>
     <tr class="w3-light-grey">
-      <th class="w3-grey">Courses</th>
-      <th class="w3-grey">Info/Details</th>
+      <th class="w3-grey">Course ID</th>
+      <th class="w3-grey">Course Name</th>
       <th class="w3-grey">Credits</th>
     </tr>
     </thead>
-    <tr>
-      <td><a href="MyCourses/EL203/StudentHome">Computer Networks</a></td>
-      <td>Johnson</td>
-      <td>4.5</td>
-    </tr>
-    <tr>
-      <td>Embedded Hardware Design</td>
-      <td>Johnson</td>
-      <td>4.5</td>
 
+    <% if(data) {%>
+      <% for(var i=0; i < data.course_list.length; i++) { %>
+    <tr>
+      <form method="get" name="form">
+      <td><a href='MyCourses/<%= data.course_list[i].course %>/StudentHome'><%= data.course_list[i].course %></a></td>
+      <td><a href='MyCourses/<%= data.course_list[i].course %>/StudentHome'><%= data.course_list[i].course_name %></a></td>
+      <td><p class="w3-input w3-border w3-third" name="std_ID"><%= data.course_list[i].credit %></p></td>
+      </form>
     </tr>
+    <% } %>
+    <% } %>
 </table>
 </div>
 

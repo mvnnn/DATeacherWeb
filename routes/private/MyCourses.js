@@ -1,6 +1,8 @@
 var Grade = require('../../model/grade');
 var Criteria = require('../../model/criteria');
 var Upload = require('../../model/upload');
+var PComment = require('../../model/pComment');
+var TCourse = require('../../model/tCourse');
 var User = require('../../model/user');
 var Cookies = require( "cookies" );
 var express = require('express');
@@ -9,14 +11,24 @@ var app = express();
 var methodOverride = require('method-override');
 app.use(cookieParser());
 var mongoose=require('mongoose');
-
-
+var url = require('url') ;
 
 exports.myCourses=function(req,res){
   User.findOne({token:req.cookies.token}, function (err, response) {
     // console.log(response);
     if(response){
-      res.render('MyCourses');
+
+      TCourse.findOne({id:response.id}, function (err, respo) {
+        // console.log(response.id);
+        // console.log(respo);
+        if(respo){
+          respo = respo;
+        }
+        else{
+          respo = null;
+        }
+       res.render('MyCourses',{data:respo});
+      });
     }
     else{
       res.render('Authentication');
@@ -29,6 +41,7 @@ exports.studentHome=function(req,res){
   User.findOne({token:req.cookies.token}, function (err, response) {
     // console.log(response);
     if(response){
+      console.log(url.parse(req.url).pathname.split("/")[2]);
       res.render('StudentHome');
     }
     else{
@@ -41,13 +54,44 @@ exports.studentList=function(req,res){
   User.findOne({token:req.cookies.token}, function (err, response) {
     // console.log(response);
     if(response){
-      res.render('StudentList');
+      Upload.find({id:response.id, course:url.parse(req.url).pathname.split("/")[2]}, function (err, respo) {
+        // console.log(response);
+        if(response){
+          respo = respo;
+        }
+        else{
+          respo = null;
+        }
+       res.render('StudentList',{data:respo});
+      });
     }
     else{
       res.render('Authentication');
     }
   });
 };
+
+exports.postStudentList=function(req,res){
+  User.findOne({token:req.cookies.token}, function (err, response) {
+    // console.log(response);
+    if(response){
+      PComment.update({id:response.id, course:url.parse(req.url).pathname.split("/")[2],std_id:req.body.ID},
+        {id:response.id,
+        course:url.parse(req.url).pathname.split("/")[2],
+        std_id:req.body.ID,
+        post:req.body.data},
+        { upsert: true },
+        function(err, response){
+          if(err) throw err;
+          else res.redirect('StudentList');
+        });
+      }
+    else{
+      res.render('Authentication');
+    }
+  });
+};
+
 
 
 
@@ -57,7 +101,7 @@ exports.setCriteria=function(req,res){
   User.findOne({token:req.cookies.token}, function (err, response) {
     // console.log(response);
     if(response){
-      Criteria.findOne({id:response.id}, function (err, respo) {
+      Criteria.findOne({id:response.id, course:url.parse(req.url).pathname.split("/")[2]}, function (err, respo) {
         // console.log(response);
         if(response){
           respo = respo;
@@ -82,9 +126,9 @@ exports.saveSetCriteria=function(req,res){
   User.findOne({token:req.cookies.token}, function (err, response) {
     // console.log(response);
     if(response){
-      Criteria.update({id:response.id, course:"EL203"},
+      Criteria.update({id:response.id, course:url.parse(req.url).pathname.split("/")[2]},
         {id:response.id,
-        course:"EL203",
+        course:url.parse(req.url).pathname.split("/")[2],
         insem1:req.body.insem1,
         insem2:req.body.insem2,
         endsem:req.body.endsem,
@@ -128,22 +172,11 @@ exports.uploadMarks=function(req,res){
 
 exports.setUploadMarks=function(req,res){
   var n = (req.body.line.length-1) / 6;
-  // var aa = req.body;
-  // var lines = aa.split(",");
   User.findOne({token:req.cookies.token}, function (err, response) {
-    // console.log(response);
     if(response){
-
       for (i = 1; i < n; i++) {
-
         var ee = req.body.line[6*i].split("\n");
         var ww;
-        // console.log(ee[1]);
-        // console.log(req.body.line[(6*i)+1]);
-        // console.log(req.body.line[(6*i)+2]);
-        // console.log(req.body.line[(6*i)+3]);
-        // console.log(req.body.line[(6*i)+4]);
-        // console.log(req.body.line[(6*i)+5]);
         if(i<(n-1)){
         var www = req.body.line[(6*i)+6].split("\n");
         ww = www[0];
@@ -152,9 +185,9 @@ exports.setUploadMarks=function(req,res){
           ww = req.body.line[(6*i)+6];
         }
 
-      Upload.update({id:response.id, course:"EL203",std_id:ee[1]},
+      Upload.update({id:response.id, course:url.parse(req.url).pathname.split("/")[2],std_id:ee[1]},
         {id:response.id,
-        course:"EL203",
+        course:url.parse(req.url).pathname.split("/")[2],
         std_id:ee[1],
         insem1:req.body.line[(6*i)+1],
         insem2:req.body.line[(6*i)+2],
@@ -184,7 +217,7 @@ exports.StudentMarksList=function(req,res){
   User.findOne({token:req.cookies.token}, function (err, response) {
     // console.log(response);
     if(response){
-      Upload.find({id:response.id, course:"EL203"}, function (err, respo) {
+      Upload.find({id:response.id, course:url.parse(req.url).pathname.split("/")[2]}, function (err, respo) {
         // console.log(response);
         if(response){
           respo = respo;
@@ -208,28 +241,21 @@ exports.UpdateStudentMarksList=function(req,res){
   User.findOne({token:req.cookies.token}, function (err, response) {
     // console.log(response);
     if(response){
-      for(i=0;i<(req.body.ArrSize);i++){
-        console.log(req.body.std_id[i]);
-        console.log(req.body.insem1[i]);
-        console.log(req.body.insem2[i]);
-        console.log(req.body.endsem[i]);
-        console.log(req.body.project[i]);
-        console.log(req.body.lab[i]);
-        console.log(req.body.attendance[i]);
-        console.log(response.id);
-      Upload.update({id:response.id, course:"EL203", std_id:req.body.std_id[i]},
+      Upload.update({id:response.id, course:url.parse(req.url).pathname.split("/")[2],std_id:req.body.std_id},
         {id:response.id,
-        course:"EL203",
-        std_id:req.body.std_id[i],
-        insem1:req.body.insem1[i],
-        insem2:req.body.insem2[i],
-        endsem:req.body.endsem[i],
-        project:req.body.project[i],
-        lab:req.body.lab[i],
-        attendance:req.body.attendance[i]},
-        { upsert: true });
-      }
-      // res.redirect('StudentMarksList');
+        course:url.parse(req.url).pathname.split("/")[2],
+        std_id:req.body.std_id,
+        insem1:req.body.insem1,
+        insem2:req.body.insem2,
+        endsem:req.body.endsem,
+        project:req.body.project,
+        lab:req.body.lab,
+        attendance:req.body.attendance},
+        { upsert: true },
+        function(err, response){
+          if(err) throw err;
+          else res.redirect('StudentMarksList');
+        });
     }
     else{
       res.render('Authentication');
@@ -240,8 +266,7 @@ exports.UpdateStudentMarksList=function(req,res){
 
 
 exports.performanceStates=function(req,res){
-  data = "ahahhaha";
-  res.render('PerformanceStates',{data:data});
+  res.render('PerformanceStates');
 };
 
 
@@ -249,17 +274,24 @@ exports.performanceStates=function(req,res){
 
 /* Generate grade*/
 exports.genGrades=function(req,res){
-  Grade.findOne({id:20111111}, function (err, response) {
+
+  User.findOne({token:req.cookies.token}, function (err, response) {
+    // console.log(response);
     if(response){
-      response = response;
+      Grade.findOne({id:response.id, course:url.parse(req.url).pathname.split("/")[2]}, function (err, respo) {
+        if(respo){
+          respo = respo;
+        }
+        else{
+          response = null;
+        }
+       res.render('GenGrades',{data:respo});
+      });
     }
     else{
-      response = null;
+      res.render('Authentication');
     }
-   res.render('GenGrades',{data:response});
   });
-  // var dd =null;
-  // res.render('GenGrades',{data:null});
 };
 
 exports.storeGrades=function(req,res){
@@ -267,8 +299,11 @@ exports.storeGrades=function(req,res){
   // Grade.remove({id: 20111111},function(err){
   //   if(err) throw err;
   // });
+  User.findOne({token:req.cookies.token}, function (err, response) {
+    // console.log(response);
+    if(response){
 
-  Grade.update({id:20111111, course:"EL203"},
+  Grade.update({id:response.id, course:url.parse(req.url).pathname.split("/")[2]},
     {   AA:[{ min: req.body.AAmin, max:req.body.AAmax }],
         AB:[{ min: req.body.ABmin, max:req.body.ABmax }],
         BB:[{ min: req.body.BBmin, max:req.body.BBmax }],
@@ -278,13 +313,19 @@ exports.storeGrades=function(req,res){
         DD:[{ min: req.body.DDmin, max:req.body.DDmax }],
         DE:[{ min: req.body.DEmin, max:req.body.DEmax }],
         F:[{ min: req.body.Fmin, max:req.body.Fmax }],
-        id:20111111,
-        course:"EL203"},
+        id:response.id,
+        course:url.parse(req.url).pathname.split("/")[2]},
         { upsert: true },
     function(err){
       if(err) throw err;
       else res.redirect('GenGrades');
     });
+}
+else{
+  res.render('Authentication');
+}
+});
+};
 
   // var post = new Grade({
   //   AA:[{ min: req.body.AAmin, max:req.body.AAmax }],
@@ -303,10 +344,18 @@ exports.storeGrades=function(req,res){
   // post.save(mongoose);
   // // console.log(post);
   // res.render('GenGrades',{data:post});
-};
+
 
 
 
 exports.broadcast=function(req,res){
+  User.findOne({token:req.cookies.token}, function (err, response) {
+    // console.log(response);
+    if(response){
   res.render('Broadcast');
+}
+else{
+  res.render('Authentication');
+}
+});
 };

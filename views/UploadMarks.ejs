@@ -11,6 +11,8 @@ window.onload = function() {
 		var fileDisplayArea = document.getElementById('fileDisplayArea');
     var data = "";
 		Id.addEventListener('click', function(e) {
+      var pageURL = $(location).attr("href");
+      console.log(pageURL);
 			var file = fileInput.files[0];
 			var textType = /text.*/;
 
@@ -19,13 +21,13 @@ window.onload = function() {
 
 				reader.onload = function(e) {
           this.data = reader.result;
-          console.log(reader);
+          // console.log(reader);
           var text = [];
           for (i = 0; i < reader.result.length; i++) {
             text[i] = reader.result;
           }
           var lines = reader.result.split(",");
-          $.post("/MyCourses/EL203/UploadMarks",{line:lines});
+          $.post(pageURL,{line:lines});
 				}
 				reader.readAsText(file);
 			} else {

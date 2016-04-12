@@ -4,7 +4,7 @@ var PostSchema = new mongoose.Schema({
   id:{
     type:Number
   },
-  course_id:{
+  course:{
     type:String
   },
   insem1:{

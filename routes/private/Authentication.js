@@ -74,7 +74,7 @@ exports.login=function(req,res){
 exports.loginAuth=function(req,res){
   User.findOne({id:req.body.id, password:req.body.password}, function (err, response) {
     if(response){
-      console.log(response.token);
+      // console.log(response.token);
       res.cookie('token', response.token, { maxAge: 900000000, httpOnly: true });
       res.render('Home');
     }

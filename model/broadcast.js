@@ -14,7 +14,7 @@ var postSchema= Schema({
     type:Number,
     required:true
   },
-  course_id:{
+  course:{
     type:String,
     required:true
   }

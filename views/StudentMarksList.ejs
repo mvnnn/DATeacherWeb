@@ -23,25 +23,25 @@
     </tr>
     </thead>
 
-    <form method="post">
+
     <% if(data) {%>
-    <tr>
-      <input type="hidden" name="ArrSize" value= "<%= data.length%>" >
       <% for(var i=0; i < data.length; i++) { %>
-      <td><input class="w3-input w3-border w3-twothird" placeholder="StudentID" name="std_id"[i] value= "<%= data[i].std_id%>"></td>
-      <td><input class="w3-input w3-border w3-third" placeholder="InSem1" name="insem1"[i] value= "<%= data[i].insem1%>"></td>
-      <td><input class="w3-input w3-border w3-third" placeholder="InSem2" name="insem2"[i] value= "<%= data[i].insem2%>"></td>
-      <td><input class="w3-input w3-border w3-third" placeholder="Endsem" name="endsem"[i] value= "<%= data[i].endsem%>"></td>
-      <td><input class="w3-input w3-border w3-third" placeholder="Lab" name="lab"[i] value= "<%= data[i].lab%>"></td>
-      <td><input class="w3-input w3-border w3-third" placeholder="Project" name="project"[i] value= "<%= data[i].project%>"></td>
-      <td><input class="w3-input w3-border w3-third" placeholder="Attendance" name="attendance"[i] value= "<%= data[i].attendance%>"></td>
-    </tr>
+      <input type="hidden" name="ArrSize" value= "<%= data.length%>" >
+      <form method="post">
+      <tr>
+      <input type="hidden" name="ID" value= "<%= data[i].std_id%>" >
+      <td><input class="w3-input w3-border w3-twothird" placeholder="StudentID" name="std_id" value= "<%= data[i].std_id%>"></td>
+      <td><input class="w3-input w3-border w3-third" placeholder="InSem1" name="insem1" value= "<%= data[i].insem1%>"></td>
+      <td><input class="w3-input w3-border w3-third" placeholder="InSem2" name="insem2" value= "<%= data[i].insem2%>"></td>
+      <td><input class="w3-input w3-border w3-third" placeholder="Endsem" name="endsem" value= "<%= data[i].endsem%>"></td>
+      <td><input class="w3-input w3-border w3-third" placeholder="Lab" name="lab" value= "<%= data[i].lab%>"></td>
+      <td><input class="w3-input w3-border w3-third" placeholder="Project" name="project" value= "<%= data[i].project%>"></td>
+      <td><input class="w3-input w3-border w3-third" placeholder="Attendance" name="attendance" value= "<%= data[i].attendance%>">&nbsp; <input class="w3-button w3-padding" type="submit" value="Update"></td>
+      </tr>
+      </form>
     <% } %>
-    <tr>
-    <td><input class="w3-btn w3-grey w3-border w3-border-black w3-round-xlarge" type="submit" value="Submit"></td>
-    </tr>
   <% } %>
-  </form>
+
 </table>
 </div>
 

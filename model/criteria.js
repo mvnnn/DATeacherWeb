@@ -6,7 +6,7 @@ var postSchema= Schema({
     type:Number,
     require:true
   },
-  course_id:{
+  course:{
     type:String
   },
   insem1:{
