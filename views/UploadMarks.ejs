@@ -15,13 +15,14 @@ window.onload = function() {
       console.log(pageURL);
 			var file = fileInput.files[0];
 			var textType = /text.*/;
-
+      console.log("yessssssssssssssss");
+      // console.log(limit);
 			if (file.type.match(textType)) {
 				var reader = new FileReader();
 
 				reader.onload = function(e) {
           this.data = reader.result;
-          // console.log(reader);
+          console.log(reader.result);
           var text = [];
           for (i = 0; i < reader.result.length; i++) {
             text[i] = reader.result;

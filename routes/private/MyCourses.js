@@ -41,7 +41,7 @@ exports.studentHome=function(req,res){
   User.findOne({token:req.cookies.token}, function (err, response) {
     // console.log(response);
     if(response){
-      console.log(url.parse(req.url).pathname.split("/")[2]);
+      // console.log(url.parse(req.url).pathname.split("/")[2]);
       res.render('StudentHome');
     }
     else{
@@ -218,7 +218,7 @@ exports.StudentMarksList=function(req,res){
     // console.log(response);
     if(response){
       Upload.find({id:response.id, course:url.parse(req.url).pathname.split("/")[2]}, function (err, respo) {
-        // console.log(response);
+        console.log(respo);
         if(response){
           respo = respo;
         }
@@ -266,7 +266,24 @@ exports.UpdateStudentMarksList=function(req,res){
 
 
 exports.performanceStates=function(req,res){
-  res.render('PerformanceStates');
+  User.findOne({token:req.cookies.token}, function (err, response) {
+    // console.log(response);
+    if(response){
+      Upload.find({id:response.id, course:url.parse(req.url).pathname.split("/")[2]}, function (err, respo) {
+        console.log(respo);
+        if(response){
+          respo = respo;
+        }
+        else{
+          respo = null;
+        }
+       res.render('PerformanceStates',{data:respo});
+      });
+    }
+    else{
+      res.render('Authentication');
+    }
+    });
 };
 
 

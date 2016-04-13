@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var mongoose=require('mongoose');
 var Cookies = require( "cookies" );
 var port=process.env.PORT || 3000 ;
-var dburl='mongodb://student:**@ds011389.mlab.com:11389/courseaid';
+var dburl='mongodb://student:senteam15@ds011389.mlab.com:11389/courseaid';
 mongoose.connect(dburl);
 
 var Home = require('./routes/private/Home');
@@ -37,11 +37,15 @@ app.use(logger('dev'));
 app.use(allowCrossDomain);
 app.set('view engine', 'ejs');
 app.use(favicon(path.join('public','bb.ico')));
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({limit: '50mb'}));
+app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(cookieParser());
+// app.use(express.bodyParser({limit: '50mb'}));
+// app.use( bodyParser.raw({limit: '1mb'}) );
 var methodOverride = require('method-override');
 app.use(express.static(path.join(__dirname, 'public')));
 
