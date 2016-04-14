@@ -1,3 +1,5 @@
+//  mongodb schema to store the range specified by the professor in order to generate the grades
+
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 

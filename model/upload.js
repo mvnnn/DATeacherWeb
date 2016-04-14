@@ -1,3 +1,5 @@
+//  mongodb schema to store the csv file uploaded by the professor
+
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 
