@@ -6,13 +6,13 @@
 
 <body>
 <% include StudentNavbar.ejs %>
+<br><br>
 
 <script>
 var x = document.getElementById("repository");
 x.className = "active";
 </script>
-
-          <div id="repos" class="w3-box-center">
+          <div id="repos" class="w3-box-home">
             <% if(data) {%>
               <% for(var i=0; i < data.length; i++) { %>
                 <form method="post">
@@ -24,6 +24,8 @@ x.className = "active";
               <% } %>
               <% } %>
 </div>
+<br><br><br><br>
+
 
 <% include Footer.ejs %>
 
