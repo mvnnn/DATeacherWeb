@@ -76,10 +76,12 @@ app.post('/MyCourses/*/StudentMarksList', MyCourses.UpdateStudentMarksList);
 app.get('/MyCourses/*/PerformanceStates', MyCourses.performanceStates);
 app.get('/MyCourses/*/GenGrades', MyCourses.genGrades);
 app.post('/MyCourses/*/GenGrades', MyCourses.storeGrades);
-app.get('/MyCourses/*/Broadcast', MyCourses.broadcast);
+app.get('/Broadcast', MyCourses.broadcast);
 
-app.get('/Queires', Queires.queires);
-app.get('/Repository', Repository.repository);
+app.get('/MyCourses/*/Queires', Queires.queires);
+app.post('/MyCourses/*/Queires', Queires.postQueires);
+app.get('/MyCourses/*/Repository', Repository.repository);
+app.post('/MyCourses/*/Repository', Repository.delRepository);
 app.get('/ChangePass', Navbar.changePass);
 app.post('/ChangePass', Navbar.PostchangePass);
 app.get('/Help', Navbar.help);

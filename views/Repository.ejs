@@ -5,12 +5,19 @@
 </head>
 
 <body>
-<% include Navbar.ejs %>
+<% include StudentNavbar.ejs %>
 
-<div id="repos" class="w3-box-center">
-           <ul class="w3-ul w3-card-4">
-               <li>@EL205: *Dislplay link* <button class="w3-btn w3-ripple w3-green">Approve</button> <button class="w3-btn w3-ripple w3-red">Not approve</button></li>
-          </ul>
+          <div id="repos" class="w3-box-center">
+            <% if(data) {%>
+              <% for(var i=0; i < data.length; i++) { %>
+                <form method="post">
+                 <ul class="w3-ul w3-card-4">
+                      <input type="hidden" value="<%= data[i].text %>" name="text">
+                     <li name="del">@<%= data[i].course %>: <%= data[i].text %> <input type="submit" value="Delete" class="w3-btn w3-ripple w3-red"/></li>
+                </ul>
+              </form>
+              <% } %>
+              <% } %>
 </div>
 
 <% include Footer.ejs %>
