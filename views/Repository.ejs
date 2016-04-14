@@ -7,6 +7,11 @@
 <body>
 <% include StudentNavbar.ejs %>
 
+<script>
+var x = document.getElementById("repository");
+x.className = "active";
+</script>
+
           <div id="repos" class="w3-box-center">
             <% if(data) {%>
               <% for(var i=0; i < data.length; i++) { %>

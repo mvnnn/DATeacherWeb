@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include Head.ejs %>
+</head>
+
+<body>
+<% include StudentNavbar.ejs %>
+
+<div class="w3-responsive">
+<div class="w3-box-center-table">
+  <table class="w3-table w3-bordered w3-border w3-hoverable" style="width:100%" >
+      <thead>
+      <tr>
+        <th class="w3-grey" >Grades</th>
+        <th class="w3-grey" >Marks Range</th>
+      </tr>
+      </thead>
+
+      <form method="post">
+      <!-- <input type="hidden" name="csrf-token" value="nc98P987bcpncYhoadjoiydc9ajDlcn"> -->
+      <% if(data) {%>
+      <tr>
+        <td >AA</td>
+        <td>
+                  <input class="w3-input w3-border w3-third" placeholder="min" type="number" min="0" max="100" name="AAmin" value= "<%= data.AA[0].min %>" >
+                  <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100" name="AAmax" value= "<%= data.AA[0].max%>">
+
+                </td>
+      </tr>
+      <tr>
+        <td>AB</td>
+        <td colspan="2">
+          <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100" name="ABmin" value= "<%= data.AB[0].min%>">
+          <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100" name="ABmax" value= "<%= data.AB[0].max%>">
+
+                </td>
+      </tr>
+      <tr>
+        <td>BB</td>
+        <td colspan="2">
+          <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100" name="BBmin" value= "<%= data.BB[0].min%>">
+          <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100" name="BBmax" value= "<%= data.BB[0].max%>">
+                </td>
+
+      </tr>
+       <tr>
+        <td>BC</td>
+        <td colspan="2">
+          <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100" name="BCmin" value= "<%= data.BC[0].min%>">
+          <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100" name="BCmax" value= "<%= data.BC[0].max%>">
+
+                </td>
+      </tr>
+       <tr>
+        <td>CC</td>
+        <td colspan="2">
+          <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100" name="CCmin" value= "<%= data.CC[0].min%>">
+          <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100" name="CCmax" value= "<%= data.CC[0].max%>">
+
+                </td>
+
+      </tr>
+       <tr>
+        <td>CD</td>
+        <td colspan="2">
+          <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100" name="CDmin" value= "<%= data.CD[0].min%>">
+          <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100" name="CDmax" value= "<%= data.CD[0].max%>">
+
+                </td>
+
+      </tr>
+      <tr>
+       <td>DD</td>
+       <td colspan="2">
+         <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100" name="DDmin" value= "<%= data.DD[0].min%>">
+         <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100" name="DDmax" value= "<%= data.DD[0].max%>">
+
+               </td>
+
+     </tr>
+     <tr>
+      <td>DE</td>
+      <td colspan="2">
+        <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100" name="DEmin" value= "<%= data.DE[0].min%>">
+        <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100" name="DEmax" value= "<%= data.DE[0].max%>">
+
+              </td>
+
+    </tr>
+    <tr>
+     <td>F</td>
+     <td colspan="2">
+       <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100" name="Fmin" value= "<%= data.F[0].min%>">
+       <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100" name="Fmax" value= "<%= data.F[0].max%>">
+
+             </td>
+
+   </tr>
+  </table>
+<br>
+<br>
+<% } else { %>
+
+  <tr>
+    <td >AA</td>
+    <td>
+              <input class="w3-input w3-border w3-third" placeholder="min" type="number" min="0" max="100" name="AAmin"  >
+              <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100" name="AAmax" >
+
+            </td>
+  </tr>
+  <tr>
+    <td>AB</td>
+    <td colspan="2">
+      <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100" name="ABmin">
+      <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100" name="ABmax" >
+
+            </td>
+  </tr>
+  <tr>
+    <td>BB</td>
+    <td colspan="2">
+      <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100" name="BBmin">
+      <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100" name="BBmax">
+            </td>
+
+  </tr>
+   <tr>
+    <td>BC</td>
+    <td colspan="2">
+      <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100" name="BCmin">
+      <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100" name="BCmax">
+
+            </td>
+  </tr>
+   <tr>
+    <td>CC</td>
+    <td colspan="2">
+      <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100" name="CCmin">
+      <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100" name="CCmax">
+
+            </td>
+
+  </tr>
+   <tr>
+    <td>CD</td>
+    <td colspan="2">
+      <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100" name="CDmin">
+      <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100" name="CDmax">
+
+            </td>
+
+  </tr>
+  <tr>
+   <td>DD</td>
+   <td colspan="2">
+     <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100" name="DDmin">
+     <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100" name="DDmax">
+
+           </td>
+
+  </tr>
+  <tr>
+  <td>DE</td>
+  <td colspan="2">
+    <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100" name="DEmin">
+    <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100" name="DEmax">
+
+          </td>
+
+  </tr>
+  <tr>
+  <td>F</td>
+  <td colspan="2">
+   <input class="w3-input w3-border w3-third" type="number" placeholder="min" min="0" max="100" name="Fmin">
+   <input class="w3-input w3-border w3-twothird" type="number" placeholder="max" min="0" max="100" name="Fmax">
+
+         </td>
+
+  </tr>
+  </table>
+  <br>
+  <br>
+
+
+<% } %>
+
+
+<input class="w3-btn w3-grey w3-border w3-border-black w3-round-xlarge" type="submit" value="Submit">
+</div>
+</div>
+
+
+
+</form>
+
+
+    <!-- <script>
+  function updateTextInput(val) {
+    document.getElementById('textInput').value=val;
+  }
+  </script> -->
+
+
+<% include Footer.ejs %>
+
+</body>
+</html>

@@ -16,7 +16,7 @@ var Authentication = require('./routes/private/Authentication');
 var MyProfile = require('./routes/private/MyProfile');
 var MyCourses = require('./routes/private/MyCourses');
 // var Grade = require('./routes/private/Grade');
-var Queires = require('./routes/private/Queires');
+var Queries = require('./routes/private/Queries');
 var Repository = require('./routes/private/Repository');
 var Navbar = require('./routes/private/Navbar');
 
@@ -79,8 +79,8 @@ app.post('/MyCourses/*/GenGrades', MyCourses.storeGrades);
 app.get('/Broadcast', MyCourses.broadcast);
 app.post('/Broadcast', MyCourses.postBroadcast);
 
-app.get('/MyCourses/*/Queires', Queires.queires);
-app.post('/MyCourses/*/Queires', Queires.postQueires);
+app.get('/MyCourses/*/Queries', Queries.queires);
+app.post('/MyCourses/*/Queries', Queries.postQueires);
 app.get('/MyCourses/*/Repository', Repository.repository);
 app.post('/MyCourses/*/Repository', Repository.delRepository);
 app.get('/ChangePass', Navbar.changePass);

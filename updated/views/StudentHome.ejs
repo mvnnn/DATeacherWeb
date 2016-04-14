@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include Head.ejs %>
+</head>
+
+<body>
+<% include StudentNavbar.ejs %>
+
+<script>
+var x = document.getElementById("studenthome");
+x.className = "active";
+</script>
+
+<script>
+var x = document.getElementById("performancestats");
+x.className = "active";
+</script>
+
+<div class="w3-box-home">
+<div class="well"><h1 align="center">Welcome</h1>
+<br>
+<h2 align="center">IT-420 </h2>
+<h2 align="center"> Introduction to Cryptography</h2>
+</div>
+
+</div>
+
+
+
+<% include Footer.ejs %>
+
+</body>
+</html>

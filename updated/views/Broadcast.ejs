@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include Head.ejs %>
+</head>
+
+<body>
+<% include StudentNavbar.ejs %>
+
+<script>
+var x = document.getElementById("broadcast");
+x.className = "active";
+</script>
+
+<div id="query" class="w3-box-center-white">
+  <form class="w3-container w3-center" method="post">
+  <input type="text" id="fname" name="fname" placeholder="Title here" style="width:40%;background-color:#eae9e8;">
+
+            <br><br>
+            <textarea placeholder="Some text..."></textarea>
+
+            <br><br><br>
+              <input type="button" class="w3-btn w3-ripple w3-teal w3-round-large" value="Post">
+
+            </form>
+
+      </div>
+
+
+<br><br><br>
+
+
+<% include Footer.ejs %>
+
+</body>
+</html>
