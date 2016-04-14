@@ -4,6 +4,7 @@ var Upload = require('../../model/upload');
 var PComment = require('../../model/pComment');
 var TCourse = require('../../model/tCourse');
 var User = require('../../model/user');
+var Broadcast = require('../../model/broadcast');
 var Cookies = require( "cookies" );
 var express = require('express');
 var cookieParser = require('cookie-parser');
@@ -344,35 +345,37 @@ else{
 });
 };
 
-  // var post = new Grade({
-  //   AA:[{ min: req.body.AAmin, max:req.body.AAmax }],
-  //   AB:[{ min: req.body.ABmin, max:req.body.ABmax }],
-  //   BB:[{ min: req.body.BBmin, max:req.body.BBmax }],
-  //   BC:[{ min: req.body.BCmin, max:req.body.BCmax }],
-  //   CC:[{ min: req.body.CCmin, max:req.body.CCmax }],
-  //   CD:[{ min: req.body.CDmin, max:req.body.CDmax }],
-  //   DD:[{ min: req.body.DDmin, max:req.body.DDmax }],
-  //   DE:[{ min: req.body.DEmin, max:req.body.DEmax }],
-  //   F:[{ min: req.body.Fmin, max:req.body.Fmax }],
-  //   id:20111111,
-  //   course:"EL203"
-  // });
-  //
-  // post.save(mongoose);
-  // // console.log(post);
-  // res.render('GenGrades',{data:post});
-
-
-
 
 exports.broadcast=function(req,res){
   User.findOne({token:req.cookies.token}, function (err, response) {
     // console.log(response);
     if(response){
-  res.render('Broadcast');
-}
-else{
-  res.render('Authentication');
-}
-});
+      res.render('Broadcast');
+    }
+    else{
+      res.render('Authentication');
+    }
+    });
+};
+
+
+exports.postBroadcast=function(req,res){
+  User.findOne({token:req.cookies.token}, function (err, response) {
+    // console.log(response);
+    if(response){
+      Broadcast.update({id:response.id, course:req.body.course, text:req.body.text},
+        {id:response.id,
+        course:req.body.course,
+        text:req.body.text,
+        comment:req.body.comment},
+        { upsert: true },
+        function(err, response){
+          if(err) throw err;
+          else res.redirect('Broadcast');
+        });
+    }
+    else{
+      res.render('Authentication');
+    }
+    });
 };

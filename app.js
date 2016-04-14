@@ -77,6 +77,7 @@ app.get('/MyCourses/*/PerformanceStates', MyCourses.performanceStates);
 app.get('/MyCourses/*/GenGrades', MyCourses.genGrades);
 app.post('/MyCourses/*/GenGrades', MyCourses.storeGrades);
 app.get('/Broadcast', MyCourses.broadcast);
+app.post('/Broadcast', MyCourses.postBroadcast);
 
 app.get('/MyCourses/*/Queires', Queires.queires);
 app.post('/MyCourses/*/Queires', Queires.postQueires);
