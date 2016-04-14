@@ -1,3 +1,5 @@
+//  mongodb schema to store the login information entered by the user
+
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 

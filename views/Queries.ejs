@@ -12,7 +12,7 @@ var x = document.getElementById("queries");
 x.className = "active";
 </script>
 
-<div id="query" class="w3-box-center">
+<div id="query" class="w3-box-home">
       <% if(data) {%>
         <% for(var i=0; i < data.length; i++) { %>
           <div id="notification" class="w3-card">
@@ -34,17 +34,16 @@ x.className = "active";
              </form>
             </div>
             <br>
-            <% } %>
-            <% } %>
           </div>
+            <% } %>
+            <% } %>
         </div>
+        <br>
     <p id="abc" class="hidden">
 
     </p>
-        <br>
-        <br>
-      </div>
-    </div>
+        
+
         <% include Footer.ejs %>
 
 <script>

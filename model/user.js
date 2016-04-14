@@ -1,3 +1,5 @@
+//  mongodb schema to store information about the user namely his password, name, and date of birth;  It also contains unique token generated for accessing the schema
+
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 

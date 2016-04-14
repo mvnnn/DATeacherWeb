@@ -1,3 +1,5 @@
+//  mongodb schema to store the queries sent by the students and the reply sent accordingly. 
+
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 
