@@ -10,10 +10,11 @@ exports.home=function(req,res){
   User.findOne({token:req.cookies.token}, function (err, response) {
     console.log(response);
     if(response){
-      res.render('Home');
+      console.log(response.name);
+      res.render('Home',{data:response.name});
     }
     else{
-      res.render('Authentication');
+      res.redirect('Authentication');
     }
   });
 

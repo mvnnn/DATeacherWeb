@@ -60,6 +60,8 @@ app.get('/Authentication', Navbar.logout);
 app.get('/Login', Authentication.login);
 app.post('/Login', Authentication.loginAuth);
 app.get('/SignUp', Authentication.signUp);
+app.get('/Forget', Authentication.forget);
+app.post('/Forget', Authentication.postforget);
 app.post('/SignUp', Authentication.signUpData);
 app.get('/Home', Home.home);
 app.get('/MyProfile', MyProfile.myProfile);
@@ -86,7 +88,7 @@ app.post('/MyCourses/*/Repository', Repository.delRepository);
 app.get('/ChangePass', Navbar.changePass);
 app.post('/ChangePass', Navbar.PostchangePass);
 app.get('/Help', Navbar.help);
-// app.get('/Logout', Navbar.logout);
+app.get('/Logout', Navbar.logout);
 // app.get('/*', Authentication.authentication);
 
 
