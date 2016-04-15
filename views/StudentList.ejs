@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Student's List</title>
 <% include Head.ejs %>
+<!-- including the header information -->
 </head>
 
 <body>
 <% include StudentNavbar.ejs %>
+  <!-- including the navigation bar which appears after selecting the course -->
 
+<!-- script to make the current tab active -->
 <script>
 var x = document.getElementById("studentlist");
 x.className = "active";
 </script>
 
+<!-- display the student's list -->
 <div id="menu2">
 <div class="w3-box-center-table">
 <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable">
@@ -39,7 +44,7 @@ x.className = "active";
 
 </div>
 
-
+<!-- include the footer information -->
 <% include Footer.ejs %>
 
 </body>

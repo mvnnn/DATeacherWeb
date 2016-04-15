@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Queries</title>
 <% include Head.ejs %>
+<!-- including the header information -->
 </head>
 
 <body>
+  <!-- including the navigation bar which appears after selecting the course -->
 <% include StudentNavbar.ejs %>
 
+
+<!-- script to make the current tab active -->
 <script>
 var x = document.getElementById("queries");
 x.className = "active";
 </script>
 
+<!-- Reply to queries asked by the students -->
 <div id="query" class="w3-box-home">
       <% if(data) {%>
         <% for(var i=0; i < data.length; i++) { %>
@@ -43,7 +49,7 @@ x.className = "active";
 
     </p>
         
-
+<!-- include the footer information -->
         <% include Footer.ejs %>
 
 <script>

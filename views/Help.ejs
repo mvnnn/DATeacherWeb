@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>Help</title>
+	<!-- including the header information -->
 <% include Head.ejs %>
 </head>
 
 <body>
+	<!-- including the navigation bar -->
 <% include Navbar.ejs %>
 
+<!-- script to make the current tab active -->
 <script>
 var x = document.getElementById("help");
 x.className = "active";
 </script>
 
+<!-- help -->
 <div id="help" class=" w3-box-home">
       <p> For any help mail us at <i>sen15.2016@gmail.com</i></p>
       <br><br><br><br><br><br><br><br><br><br>
 </div>
 
+<!-- including the footer information -->
 <% include Footer.ejs %>
 
 </body>

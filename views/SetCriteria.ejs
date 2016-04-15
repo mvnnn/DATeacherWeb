@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Set Criteria</title>
+  <!-- including the header information -->
 <% include Head.ejs %>
 </head>
 
 <body>
+  <!-- including the navigation bar which appears after selecting the course -->
 <% include StudentNavbar.ejs %>
 
+<!-- script to make the current tab active -->
 <script>
 var x = document.getElementById("setcriteria");
 x.className = "active";
 </script>
 
+<!-- set criteria : assign weightage to individual assessment -->
 <div class="w3-responsive">
 <div class="w3-box-center-table">
 <table class="w3-table w3-bordered w3-border w3-hoverable" style="width:100%">
@@ -121,7 +126,7 @@ x.className = "active";
 </div>
 
 </form>
-
+<!-- including the footer information -->
 <% include Footer.ejs %>
 
 </body>

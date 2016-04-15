@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Histogram</title>
+  <!-- including the header information -->
 <% include Head.ejs %>
 </head>
 
 <body>
+  <!-- including the student navigation bar -->
 <% include StudentNavbar.ejs %>
 
+<!-- script to make the current tab active -->
 <script>
 var x = document.getElementById("performancestats");
 x.className = "active";
 </script>
 
+<!-- displaying the histograms -->
 <div class="container" style="margin-top:50px;">
 
   
@@ -46,7 +51,7 @@ x.className = "active";
 </div>
 
 
-
+<!-- including the footer information -->
 <% include Footer.ejs %>
 
 </body>

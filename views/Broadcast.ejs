@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Broadcast</title>
+    <!-- including the header information -->
 <% include Head.ejs %>
 </head>
 
 <body>
+  <!-- including the navigation bar -->
 <% include Navbar.ejs %>
 
+<!-- script to make the current tab active -->
 <script>
 var x = document.getElementById("broadcast");
 x.className = "active";
 </script>
 
+<!-- broadcast information -->
 <div id="query" class="w3-box-center-white">
   <form class="w3-container w3-center" method="post">
     <label class="w3-label">Course Code</label>  <br>
@@ -33,7 +38,7 @@ x.className = "active";
 
 <br><br><br>
 
-
+<!-- including the footer information -->
 <% include Footer.ejs %>
 
 </body>

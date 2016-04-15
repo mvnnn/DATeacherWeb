@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>Upload Marks</title>
 <% include Head.ejs %>
+<!-- including the header information -->
 
 <link rel="stylesheet" href="/css/component.css" />
 		<link rel="stylesheet"  href="/css/demo.css" />
@@ -45,12 +47,15 @@ window.onload = function() {
 
 <body>
 <% include StudentNavbar.ejs %>
+  <!-- including the navigation bar which appears after selecting the course -->
 
+<!-- script to make the current tab active -->
 <script>
 var x = document.getElementById("uploadmarks");
 x.className = "active";
 </script>
 
+<!-- upload marks  -->
 <div class="container">
 			<div class="content">
 
@@ -65,9 +70,9 @@ x.className = "active";
           </form>
         </div>
 			</div>
-		</div><!-- /container -->
+		</div>
 
-
+<!-- including the footer information -->
 <% include Footer.ejs %>
 
 

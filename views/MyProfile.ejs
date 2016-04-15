@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Profile</title>
 <% include Head.ejs %>
+<!-- including the header information -->
 </head>
 
 <body>
 <% include Navbar.ejs %>
+  <!-- including the navigation bar -->
 
-<!--  ############################# End of Header ###########################################-->
+
+<!-- script to make the current tab active -->
 <script>
 var x = document.getElementById("myprofile");
 x.className = "active";
@@ -38,6 +42,7 @@ x.className = "active";
 </div><!-- @end #content -->
 </div><!-- @end #w -->
 
+<!-- including the footer information -->
 <% include Footer.ejs %>
 </body>
 </html>
