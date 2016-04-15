@@ -1,37 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Professor Home</title>
 <% include Head.ejs %>
+<!-- including the header information -->
 </head>
 
 <body>
 <% include Navbar.ejs %>
-<!--  ############################# End of Header ###########################################-->
-<!-- Home page info : about us -->
-<br><br>
+<!-- including the navigation bar -->
 
-<div class="w3-container">
-<div class="well"><h1 align="center">Welcome Prof.Chu</h1></div>
+<!-- script to make the current tab active -->
+<script>
+var x = document.getElementById("home");
+x.className = "active";
+</script>
 
-</div>
-<br><br>
 
-<div class="w3-row w3-border">
-<div class=" w3-container w3-light-grey w3-padding">
-  <h2>About</h2><br>
-  <p>  Our project aims to develop a Student Assessment Portal, which would help in making the grading process more efficient and in increasing student's awareness about their academic performance. It would also help in bridging the gap between professor and student by making the relevant information more accessible to the students and providing a platform for student-professor interaction. It helps to reduce the time and efforts put in maintaining logs of various assessments and computing their aggregate. It also provides few features which would help student to deal with their academic's better.
-              <br><br>
+<br>
+<br>
+<!-- home page professor -->
+<!-- <div class="w3-container">
+<div class="well"><h1 align="center">Welcome Professor</h1></div>
 
-              Initially the student need to sign up using their webmail ID. Then the students can select the courses for which they have registered. The marks obtained by each student would be accessible to them just after the professor uploads the updated excel sheet. They can view the class average and their respective percentile in each course. They can apply for recheck if required. They can ask any course related notification from the professor. They can use SPI/CPI calculator to estimate the minimum effort required in order to achieve it. They can select the courses for which they would like to receive the notification.
+</div> -->
 
-</p>
+<div id="myCarousel" class="carousel slide" data-ride="carousel" style="height:600px;width:1250px;margin-left:50px;">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
 
-</div>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="/images/rc.jpg" alt="Resource Center" style="height:600px;width:1300px;">
+       <div class="carousel-caption">
+        <h2>Welcome <%= data %></h2>
+        <p></p>
+      </div>
+    </div>
+
+    <div class="item">
+      <img src="/images/books.jpg" alt="RC Books" style="height:600px;width:1250px;">
+      <div class="carousel-caption">
+       <h2>Welcome <%= data %></h2>
+       <p></p>
+     </div>
+    </div>
+
+    <div class="item">
+      <img src="/images/lecture.jpg" alt="Lecture" style="height:600px;width:1250px;">
+      <div class="carousel-caption">
+       <h2>Welcome <%= data %></h2>
+       <p></p>
+     </div>
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
 <br><br>
 
 <!--  End of Home page  -->
 
+<!-- including the footer information -->
 <% include Footer.ejs %>
 
 </body>

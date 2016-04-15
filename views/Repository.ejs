@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Repository</title>
+  <!-- including the header information -->
 <% include Head.ejs %>
 </head>
 
 <body>
+  <!-- including the navigation bar which appears after selecting the course -->
 <% include StudentNavbar.ejs %>
+<br><br>
 
-          <div id="repos" class="w3-box-center">
+<!-- script to make the current tab active -->
+<script>
+var x = document.getElementById("repository");
+x.className = "active";
+</script>
+
+
+<!-- repository window in which the professor can disapprove the link if its not valid -->
+          <div id="repos" class="w3-box-home">
             <% if(data) {%>
               <% for(var i=0; i < data.length; i++) { %>
                 <form method="post">
@@ -19,7 +31,9 @@
               <% } %>
               <% } %>
 </div>
+<br><br><br><br>
 
+<!-- including the footer information -->
 <% include Footer.ejs %>
 
 </body>

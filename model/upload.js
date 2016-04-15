@@ -1,3 +1,5 @@
+//  mongodb schema to store the csv file uploaded by the professor
+
 var mongoose=require('mongoose');
 var Schema=mongoose.Schema;
 
@@ -28,6 +30,9 @@ var postSchema= Schema({
   },
   attendance:{
     type:Number
+  },
+  getgrade:{
+    type:String
   }
 });
 

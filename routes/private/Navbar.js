@@ -59,7 +59,7 @@ exports.logout=function(req,res){
     // console.log(response);
     if(response){
       res.clearCookie('token');
-      res.render('Authentication');
+      res.redirect('Authentication');
     }
     else{
       res.render('Authentication');

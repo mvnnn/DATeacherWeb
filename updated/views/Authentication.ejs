@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Assessment Portal</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/w3login.css">
+</head>
+</head>
+
+<body>
+
+
+<div class="w3-container w3-white w3-border">
+        <img src="/images/logo.jpg" class = "w3-margin-top w3-margin-bottom" align = "left" style="height:75px;"></img>
+      <h2 align = "right" style="font-family:'Comic Sans MS';"><br>CourseAid</h2>
+
+    </div>
+
+<div class="w3-container w3-padding-64 w3-light-grey">
+
+  <div class="w3-container w3-theme-action w3-box-center">
+
+    <h1 class="w3-ensize" align="center"><b>Welcome to CourseAid</b></h1>
+    <br>
+    <p align="center">
+    <a href="/Login"><button id="myBtn" class="w3-btn w3-ripple w3-blue-grey w3-round-large">LOGIN</button></a>
+    <a href="/SignUp"><button id="myBttn" class="w3-btn w3-ripple w3-red w3-round-large">SIGN UP</button></a>
+    </p>
+    <br>
+    <p align="center"><a href="#" style="text-decoration:underline; color:white" data-toggle="modal" data-target="#myModal">Need Help?</a></p>
+  </div>
+</div>
+
+<div class="container">
+  <!-- Trigger the modal with a button -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h3 class="modal-title" id="insModalLabel">Instructions</h3>
+      </div>
+      <div class="modal-body">
+        <p class="text-center">
+  Welcome to CourseAid.
+  </p>
+  <p><strong>For Students</strong>: Please enter your 9-digit student id (for ex. 201301XXX) in the ID field and the password sent to your webmail account after sign up as your password.</p>
+
+
+  <p><strong>For campus faculty</strong>: Please enter your DA-IICT webmail account username(for ex. username@daiict.ac.in) in the username field. Your password will be sent to you after sign up</p>
+
+
+
+  <p><span style="color:red">If you are unable to login to the CourseAid with your password, or have forgotten your password, please click on the "Forgot Password?" link</span>, enter your DA-IICT webmail ID. An email with the password reset instructions will be sent to the id provided by you.</p>
+
+  <p>If you're unable to login to your CourseAid account, please write to <a href="sen15.2016@gmail.com">sen15.2016@gmail.com</a></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<%include Footer.ejs %>
+
+</body>
+</html>

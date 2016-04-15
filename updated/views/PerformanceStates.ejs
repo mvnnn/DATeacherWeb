@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include Head.ejs %>
+</head>
+
+<body>
+<% include StudentNavbar.ejs %>
+
+<script>
+var x = document.getElementById("performancestats");
+x.className = "active";
+</script>
+
+<div class="container" style="margin-top:50px;">
+
+  
+  <ul class="nav nav-pills col-md-2 nav-justified">
+    <li class="active w3-margin w3-padding"><a data-toggle="pill" href="#insem1">Insem 1</a></li>
+    <li class = "w3-margin w3-padding"><a data-toggle="pill" href="#insem2">Insem 2</a></li>
+    <li class = " w3-margin w3-padding"><a data-toggle="pill" href="#endsem">End Sem</a></li>
+    <li class = " w3-margin w3-padding"><a data-toggle="pill" href="#project">Project</a></li>
+  </ul>
+  
+  <div class="tab-content">
+    <div id="insem1" class="tab-pane fade in active">
+      <p>
+      	<iframe width="750" height="500" frameborder="0" scrolling="no" src="https://plot.ly/~saifee95/0.embed" style="margin-left:150px;"></iframe>
+      </p>
+    </div>
+    <div id="insem2" class="tab-pane fade ">
+      <p>
+     <iframe width="750" height="500" frameborder="0" scrolling="no" src="https://plot.ly/~saifee95/3.embed" style="margin-left:150px;"></iframe></p>
+    
+    </div>
+    <div id="endsem" class="tab-pane fade ">
+  	<p>  <iframe width="750" height="500" frameborder="0" scrolling="no" src="https://plot.ly/~saifee95/5.embed" style="margin-left:150px;"></iframe> </p>
+    </div>
+    <div id="project" class="tab-pane fade ">
+     <p>
+    
+ <iframe width="750" height="500" frameborder="0" scrolling="no" src="https://plot.ly/~saifee95/7.embed" style="margin-left:150px;"></iframe></p>
+    
+    </div>
+  </div>
+</div>
+
+
+
+<% include Footer.ejs %>
+
+</body>
+</html>

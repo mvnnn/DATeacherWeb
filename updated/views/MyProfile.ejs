@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include Head.ejs %>
+</head>
+
+<body>
+<% include Navbar.ejs %>
+
+<!--  ############################# End of Header ###########################################-->
+<script>
+var x = document.getElementById("myprofile");
+x.className = "active";
+</script>
+
+<!--  My Profile Tab in Students Portal-->
+<div id="profile" class="tab-pane fade in active">
+
+
+<div id="w">
+<div id="content" class="clearfix w3-box-center">
+  <div id="userphoto"><img src="images/avatar.png" alt="default avatar"></div>
+  <h1>Users Profile</h1>
+  <br><br>
+  <br><br>
+  <br>
+
+  <section id="bio">
+
+    <p class="setting"><span>Name </span> <%= data.name %> </p>
+
+    <p class="setting"><span>ID</span> <%= data.id %></p>
+
+    <p class="setting"><span>DOB</span><%= data.DOB %></p>
+
+  </section>
+
+</div><!-- @end #content -->
+</div><!-- @end #w -->
+
+<% include Footer.ejs %>
+</body>
+</html>

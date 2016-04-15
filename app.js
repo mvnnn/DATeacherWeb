@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var mongoose=require('mongoose');
 var Cookies = require( "cookies" );
 var port=process.env.PORT || 3000 ;
-var dburl='mongodb://student:senteam15@ds011389.mlab.com:11389/courseaid';
+var dburl='mongodb://student:******@ds011389.mlab.com:11389/courseaid';
 mongoose.connect(dburl);
 
 var Home = require('./routes/private/Home');
@@ -16,7 +16,7 @@ var Authentication = require('./routes/private/Authentication');
 var MyProfile = require('./routes/private/MyProfile');
 var MyCourses = require('./routes/private/MyCourses');
 // var Grade = require('./routes/private/Grade');
-var Queires = require('./routes/private/Queires');
+var Queries = require('./routes/private/Queries');
 var Repository = require('./routes/private/Repository');
 var Navbar = require('./routes/private/Navbar');
 
@@ -60,6 +60,8 @@ app.get('/Authentication', Navbar.logout);
 app.get('/Login', Authentication.login);
 app.post('/Login', Authentication.loginAuth);
 app.get('/SignUp', Authentication.signUp);
+app.get('/Forget', Authentication.forget);
+app.post('/Forget', Authentication.postforget);
 app.post('/SignUp', Authentication.signUpData);
 app.get('/Home', Home.home);
 app.get('/MyProfile', MyProfile.myProfile);
@@ -79,14 +81,14 @@ app.post('/MyCourses/*/GenGrades', MyCourses.storeGrades);
 app.get('/Broadcast', MyCourses.broadcast);
 app.post('/Broadcast', MyCourses.postBroadcast);
 
-app.get('/MyCourses/*/Queires', Queires.queires);
-app.post('/MyCourses/*/Queires', Queires.postQueires);
+app.get('/MyCourses/*/Queries', Queries.queires);
+app.post('/MyCourses/*/Queries', Queries.postQueires);
 app.get('/MyCourses/*/Repository', Repository.repository);
 app.post('/MyCourses/*/Repository', Repository.delRepository);
 app.get('/ChangePass', Navbar.changePass);
 app.post('/ChangePass', Navbar.PostchangePass);
 app.get('/Help', Navbar.help);
-// app.get('/Logout', Navbar.logout);
+app.get('/Logout', Navbar.logout);
 // app.get('/*', Authentication.authentication);
 
 

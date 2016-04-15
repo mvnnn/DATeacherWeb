@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Queries</title>
 <% include Head.ejs %>
+<!-- including the header information -->
 </head>
 
 <body>
+  <!-- including the navigation bar which appears after selecting the course -->
 <% include StudentNavbar.ejs %>
 
-<div id="query" class="w3-box-center">
+
+<!-- script to make the current tab active -->
+<script>
+var x = document.getElementById("queries");
+x.className = "active";
+</script>
+
+<!-- Reply to queries asked by the students -->
+<div id="query" class="w3-box-home">
       <% if(data) {%>
         <% for(var i=0; i < data.length; i++) { %>
           <div id="notification" class="w3-card">
@@ -16,8 +27,8 @@
               <input type="hidden" value="<%= data[i].std_id %>" name="std_id">
               <input type="hidden" value="<%= data[i].course %>" name="course">
               <input type="hidden" value="<%= data[i].text %>" name="text">
-              <input onclick="myFunction('reply')" class="w3-btn-block w3-left-align w3-blue" value="@ <%= data[i].course %> : <%= data[i].text %>">
-              <div id="reply" class="w3-accordion-content w3-container">
+              <input onclick="myFunction('<%= data[i].text %>')" class="w3-btn-block w3-left-align w3-blue" value="@ <%= data[i].course %> : <%= data[i].text %>">
+              <div id="<%= data[i].text %>" class="w3-accordion-content w3-container">
               <br>
                 <% if(data[i].comment) {%>
                 <textarea name="comment" value="<%= data[i].comment %>">  </textarea>
@@ -29,14 +40,22 @@
              </form>
             </div>
             <br>
-            <% } %>
-            <% } %>
           </div>
+            <% } %>
+            <% } %>
         </div>
+        <br>
+    <p id="abc" class="hidden">
+
+    </p>
+        
+<!-- include the footer information -->
+        <% include Footer.ejs %>
 
 <script>
 function myFunction(id) {
     var x = document.getElementById(id);
+    document.getElementById('abc').innerHTML = x;
      if (x.classList) {
          x.classList.toggle("w3-show");
      } else {
@@ -49,7 +68,6 @@ function myFunction(id) {
  }
  </script>
 
-<% include Footer.ejs %>
 
 </body>
 </html>

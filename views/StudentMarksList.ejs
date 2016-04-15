@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>View Marks</title>
 <% include Head.ejs %>
+<!-- include header information -->
 </head>
 
 <body>
 <% include StudentNavbar.ejs %>
+  <!-- including the navigation bar which appears after selecting the course -->
 
+<!-- script to make the current tab active -->
+<script>
+var x = document.getElementById("studentmarkslist");
+x.className = "active";
+</script>
 
+<!-- student's marks in various assessment -->
 <div id="menu2">
 <div class="w3-box-center-table">
 <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable">
@@ -20,6 +29,7 @@
       <th class="w3-grey">Lab</th>
       <th class="w3-grey">Project</th>
       <th class="w3-grey">Attendance</th>
+      <th class="w3-grey">GetGrade</th>
     </tr>
     </thead>
 
@@ -36,7 +46,8 @@
       <td><input class="w3-input w3-border w3-third" placeholder="Endsem" name="endsem" value= "<%= data[i].endsem%>"></td>
       <td><input class="w3-input w3-border w3-third" placeholder="Lab" name="lab" value= "<%= data[i].lab%>"></td>
       <td><input class="w3-input w3-border w3-third" placeholder="Project" name="project" value= "<%= data[i].project%>"></td>
-      <td><input class="w3-input w3-border w3-third" placeholder="Attendance" name="attendance" value= "<%= data[i].attendance%>">&nbsp; <input class="w3-button w3-padding" type="submit" value="Update"></td>
+      <td><input class="w3-input w3-border w3-third" placeholder="Attendance" name="attendance" value= "<%= data[i].attendance%>"></td>
+      <td><input class="w3-input w3-border w3-third" placeholder="Grade" name="gengrade" value= "<%= data[i].getgrade%>">&nbsp; <input class="w3-button w3-padding" type="submit" value="Update"></td>
       </tr>
       </form>
     <% } %>

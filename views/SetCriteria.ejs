@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Set Criteria</title>
+  <!-- including the header information -->
 <% include Head.ejs %>
 </head>
 
 <body>
+  <!-- including the navigation bar which appears after selecting the course -->
 <% include StudentNavbar.ejs %>
+
+<!-- script to make the current tab active -->
+<script>
+var x = document.getElementById("setcriteria");
+x.className = "active";
+</script>
+
+<!-- set criteria : assign weightage to individual assessment -->
 <div class="w3-responsive">
 <div class="w3-box-center-table">
 <table class="w3-table w3-bordered w3-border w3-hoverable" style="width:100%">
@@ -13,7 +24,6 @@
     <tr>
       <th class="w3-grey ">Type</th>
       <th class="w3-grey">Weightage</th>
-      <th class="w3-grey">Select</th>
     </tr>
     </thead>
 
@@ -25,54 +35,42 @@
       <td>
                 <input class="w3-input w3-border w3-twothird" type="number" placeholder="%" min="0" max="100" name="insem1"  value= "<%= data.insem1 %>">
                   </td>
-      <td>
-          <input type="checkbox" value="">
-      </td>
+
     </tr>
     <tr>
       <td>In Sem-2</td>
       <td>
                 <input class="w3-input w3-border w3-twothird" type="number" placeholder="%" min="0" max="100" name="insem2"  value= "<%= data.insem2 %>">
                   </td>
-      <td>
-          <input type="checkbox" value="">
-      </td>
+
     </tr>
     <tr>
       <td>End Sem</td>
       <td>
                 <input class="w3-input w3-border w3-twothird" type="number" placeholder="%" min="0" max="100" name="endsem"  value= "<%= data.endsem %>">
                   </td>
-      <td>
-          <input type="checkbox" value="">
-      </td>
+
     </tr>
      <tr>
       <td>Lab</td>
       <td>
                 <input class="w3-input w3-border w3-twothird" type="number" placeholder="%" min="0" max="100" name="lab"  value= "<%= data.lab %>">
                   </td>
-      <td>
-          <input type="checkbox" value="">
-      </td>
+
     </tr>
      <tr>
       <td>Project</td>
       <td>
                 <input class="w3-input w3-border w3-twothird" type="number" placeholder="%" min="0" max="100" name="project"  value= "<%= data.project %>">
                   </td>
-      <td>
-          <input type="checkbox" value="">
-      </td>
+
     </tr>
      <tr>
       <td>Attendance</td>
       <td>
                 <input class="w3-input w3-border w3-twothird" type="number" placeholder="%" min="0" max="100" name="attendance"  value= "<%= data.attendance %>">
                   </td>
-      <td>
-          <input type="checkbox" value="">
-      </td>
+
     </tr>
 
     <% } else { %>
@@ -82,76 +80,53 @@
         <td>
                   <input class="w3-input w3-border w3-twothird" type="number" placeholder="%" min="0" max="100" name="insem1">
                     </td>
-        <td>
-            <input type="checkbox" value="">
-        </td>
+
       </tr>
       <tr>
         <td>In Sem-2</td>
         <td>
                   <input class="w3-input w3-border w3-twothird" type="number" placeholder="%" min="0" max="100" name="insem2">
                     </td>
-        <td>
-            <input type="checkbox" value="">
-        </td>
+
       </tr>
       <tr>
         <td>End Sem</td>
         <td>
                   <input class="w3-input w3-border w3-twothird" type="number" placeholder="%" min="0" max="100" name="endsem">
                     </td>
-        <td>
-            <input type="checkbox" value="">
-        </td>
+
       </tr>
        <tr>
         <td>Lab</td>
         <td>
                   <input class="w3-input w3-border w3-twothird" type="number" placeholder="%" min="0" max="100" name="lab">
                     </td>
-        <td>
-            <input type="checkbox" value="">
-        </td>
+
       </tr>
        <tr>
         <td>Project</td>
         <td>
                   <input class="w3-input w3-border w3-twothird" type="number" placeholder="%" min="0" max="100" name="project">
                     </td>
-        <td>
-            <input type="checkbox" value="">
-        </td>
+
       </tr>
        <tr>
         <td>Attendance</td>
         <td>
                   <input class="w3-input w3-border w3-twothird" type="number" placeholder="%" min="0" max="100" name="attendance">
                     </td>
-        <td>
-            <input type="checkbox" value="">
-        </td>
       </tr>
 <% } %>
 
-
-
 </table>
 
-
-
-<br>
-<a href="#" data-toggle="tooltip" title="Add another field" class="w3-btn-floating w3-teal">+</a>
-<br><br>
-<div class="checkbox">
-  <label><input type="checkbox" value="">Weightage visible to the students</label>
-</div>
 <br>
 <input class="w3-btn w3-blue-grey w3-border w3-border w3-round-xlarge" type="submit" value="Submit">
 </div>
 </div>
 
 </form>
-
+<!-- including the footer information -->
 <% include Footer.ejs %>
 
 </body>

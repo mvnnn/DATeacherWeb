@@ -1,3 +1,5 @@
+//  mongodb schema to store the marks of each of the components for a specific course
+
 var mongoose = require('mongoose');
 
 var PostSchema = new mongoose.Schema({

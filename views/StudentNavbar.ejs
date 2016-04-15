@@ -4,28 +4,30 @@
 
     </div>
 
-  <p style="border:5px solid black">
+  <p style="border:5px solid black"></p>
 <!-- do it container fluid if navigation bar expand..-->
-  <div class=" w3-theme-action">
-  <ul class="nav nav-tabs nav-justified" >
-     <li><a href="/Home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+   <nav data-spy="affix" data-offset-top="120" style="background-color:#1e3552;color:#fff;">
+  <ul class="nav nav-tabs nav-justified">
+     <li id="StudentHome"><a href="/Home"><span class="glyphicon glyphicon-home"></span></a></li>
 
-    <li><a href="StudentList">Student List</a></li>
-    <li><a href="SetCriteria">Set Criteria</a></li>
-    <li><a href="UploadMarks">Upload Marks</a></li>
-    <li><a href="StudentMarksList">Student Marks List</a></li>
-    <li><a href="PerformanceStates">Performance States</a></li>
-    <li><a href="GenGrades">Gen Grades</a></li>
-    <li><a href="Queires">Queries</a></li>
-    <li><a href="Repository">Repository</a></li>
+    <li id="setcriteria"><a href="SetCriteria">Set Criteria</a></li>
+    <li id="gengrades"><a href="GenGrades">Grades</a></li>
+    <li id="uploadmarks"><a href="UploadMarks">Upload Marks</a></li>
+    <li id="studentmarkslist"><a href="StudentMarksList">View Marks</a></li>
+    <li id="studentlist"><a href="StudentList">Student List</a></li>
+    <li id="performancestats"><a href="PerformanceStates">Performance Stats</a></li>
+    <li id="queries"><a href="Queries">Queries</a></li>
+    <li id="repository"><a href="Repository">Repository</a></li>
 
 
     <li class="dropdown">
       <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-menu-hamburger"></span><span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><a href="/ChangePass">Change Password</a></li>
-        <li><a href="/Help">Help</a></li>
+      <ul class="dropdown-menu pull-right">
+        <li id="changepass"><a href="/ChangePass">Change Password</a></li>
+        <li id="help"><a href="/Help">Help</a></li>
         <li><a href="/Authentication">Log Out</a></li>
       </ul>
     </li>
-</div>
+
+</ul>
+</nav>

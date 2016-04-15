@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>My Courses</title>
+  <!-- including the header information -->
 <% include Head.ejs %>
 </head>
 
 <body>
+  <!-- including the navigation bar -->
 <% include Navbar.ejs %>
-<!--  ############################# End of Header ###########################################-->
+
+<!-- script to make the current tab active -->
+<script>
+var x = document.getElementById("mycourses");
+x.className = "active";
+</script>
+
+
 <!--  here it will include about the courses of professor...........-->
-<!--  My Courses Tab in Students Portal-->
+<!--  My Courses Tab in Professor-->
 <div id="menu2">
 <div class="w3-box-center-table">
 <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable">
@@ -36,8 +46,8 @@
 
 
 
-<br><br><br><br><br><br><br>
-
+<br><br>
+<!-- Including the footer information -->
 <% include Footer.ejs %>
 
 </body>

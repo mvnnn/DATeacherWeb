@@ -9,6 +9,7 @@ var methodOverride = require('method-override');
 app.use(cookieParser());
 
 exports.authentication=function(req,res){
+
   res.render('Authentication');
 };
 
@@ -34,7 +35,7 @@ exports.signUpData=function(req,res){
         service: "Gmail",
         auth: {
             user: "sen15.2016@gmail.com",
-            pass: "senteam15"
+            pass: "******"
         }
     });
 
@@ -42,8 +43,8 @@ exports.signUpData=function(req,res){
 
     mailList ={};
     mailList.to = req.body.id + "@daiict.ac.in";
-    mailList.subject = "halo bhaii.. lejo";
-    mailList.text = 'password is  "'+ pwd+'"';
+    mailList.subject = "Your courseaid password";
+    mailList.text = 'Your password is : "'+ pwd+'"';
     smtp.sendMail(mailList, function(error, response){
         if(error){
             console.log(error);
@@ -76,11 +77,49 @@ exports.loginAuth=function(req,res){
     if(response){
       // console.log(response.token);
       res.cookie('token', response.token, { maxAge: 900000000, httpOnly: true });
-      res.render('Home');
+      res.redirect('Home');
     }
     else{
-      res.render('SignUp');
+      res.redirect('SignUp');
     }
 
   });
 };
+
+
+exports.forget=function(req,res){
+  res.render('Forget');
+};
+
+
+exports.postforget=function(req,res){
+  User.findOne({id:req.body.id},
+    function(err, response){
+      if(err) throw err;
+
+  var smtp = nodemailer.createTransport("SMTP", {
+      service: "Gmail",
+      auth: {
+          user: "sen15.2016@gmail.com",
+          pass: "senteam15"
+      }
+  });
+
+
+
+  mailList ={};
+  mailList.to = req.body.id + "@daiict.ac.in";
+  mailList.subject = "Your courseaid Password";
+  mailList.text = 'Your password is :  "'+ response.password+'"';
+  smtp.sendMail(mailList, function(error, respons){
+      if(error){
+          console.log(error);
+      }
+      else{
+          console.log("Message sent: " + respons.message);
+
+      }
+  });
+res.redirect('Login');
+  });
+  };
